@@ -1,0 +1,36 @@
+﻿@using NauAnUtLanh.Database
+@model NauAnUtLanh.Dashboard.Models.LoginViewModel
+
+@{
+    Layout = null;
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Dashboard - @info?.CompanyName</title>
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" media="all"/>
+    <link href="//fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet" type="text/css">
+    <script src="@Url.Content("~/Scripts/jquery-3.1.1.js")"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+<h1>Dashboard</h1>
+<div class="login-form w3-agile">
+    <h2>Đăng nhập</h2>
+    <form action="@Url.Action("login", "account", new { returnurl = Request.QueryString["returnurl"] })" method="post">
+        @Html.ValidationSummary(false, "", new {@class = "my-text-danger"})
+        <p>Email</p>
+        @Html.TextBoxFor(m => m.Email)
+        <p>Mật khẩu</p>
+        @Html.PasswordFor(m => m.Password)
+        <input type="submit" value="Đăng nhập">
+    </form>
+</div>
+</body>
+</html>
+

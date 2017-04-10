@@ -8,7 +8,7 @@ using PagedList;
 
 namespace NauAnUtLanh.Dashboard.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
         private const int PageSize = 30;

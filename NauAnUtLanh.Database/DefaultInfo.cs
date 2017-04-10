@@ -8,7 +8,6 @@ namespace NauAnUtLanh.Database
         [Key]
         public Guid Id { get; set; }
 
-        public string SiteName { get; set; }
         public string SiteLogo { get; set; }
         public string SiteIcon { get; set; }
         public string CompanyName { get; set; }

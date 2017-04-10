@@ -1,0 +1,180 @@
+﻿@model NauAnUtLanh.Dashboard.Models.DefaultInfoViewModel
+
+@{
+    ViewBag.Title = "Thông tin mặc định";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <strong class="text-primary text-uppercase">Thông tin cơ bản</strong>
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Site logo </p>
+                        </div>
+                        <div class="col-md-12">
+                            <img src="@Url.Content($"~/upload/{@Model.SiteLogo}")" class="logo" alt="@Model.CompanyName"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Site icon </p>
+                        </div>
+                        <div class="col-md-12">
+                            <img src="@Url.Content($"~/upload/{@Model.SiteIcon}")" class="logo" alt="@Model.CompanyName"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Tên công ty / cơ sở / website </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-primary">@Model.CompanyName</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Địa chỉ liên hệ </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-primary">@Model.CompanyAddress</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Số điện thoại liên hệ </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-primary">@Model.CompanyPhone</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Đường dây nóng </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-primary">@Model.Hotline</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Địa chỉ email </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-primary">@Model.CompanyEmail</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <strong class="text-primary text-uppercase">Thông tin mạng xã hội</strong>
+                </a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Hỗ trợ trực tuyến (Skype) </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-primary">@Model.OnlineSupport</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Đường dẫn Google Map </p>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="embed-responsive embed-responsive-16by9 full-screen-map">
+                                <iframe src="@Model.GoogleMapUrl" allowfullscreen class="embed-responsive-item"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Địa chỉ Facebook Fanpage </p>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="@Model.FacebookPageUrl" target="_blank">@Model.FacebookPageUrl</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Địa chỉ Google+ </p>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="@Model.GooglePlusPageUrl" target="_blank">@Model.GooglePlusPageUrl</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Địa chỉ Twitter </p>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="@Model.TwitterPageUrl" target="_blank">@Model.TwitterPageUrl</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <strong class="text-primary text-uppercase">Thông tin Search Engine Optimize (SEO)</strong>
+                </a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Mô tả website </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-primary">@Model.MetaDescription</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Từ khóa tìm kiếm </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-primary">@Model.MetaKeywords</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Hình ảnh share Facebook </p>
+                        </div>
+                        <div class="col-md-12">
+                            <img src="@Url.Content($"~/upload/{@Model.MetaImage}")" class="img-responsive" alt="@Model.CompanyName"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr/>
+@Html.ActionLink("Hiệu chỉnh", "update") 

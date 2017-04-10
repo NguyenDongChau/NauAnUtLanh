@@ -1,0 +1,10 @@
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\NauAnUtLanh.Database.dll.config
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\NauAnUtLanh.Database.dll
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\NauAnUtLanh.Database.pdb
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\EntityFramework.dll
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\EntityFramework.SqlServer.dll
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\EntityFramework.xml
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\EntityFramework.SqlServer.xml
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.csprojResolveAssemblyReference.cache
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.dll
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.pdb

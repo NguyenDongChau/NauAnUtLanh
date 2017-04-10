@@ -1,0 +1,189 @@
+﻿@model NauAnUtLanh.Dashboard.Models.DefaultInfoViewModel
+@{
+    ViewBag.Title = "Thông tin mặc định";
+
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>Hiệu chỉnh</h4>
+<hr/>
+@using (@Html.BeginForm("update", "defaultinfo", FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" } )
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <strong class="text-primary text-uppercase">Thông tin cơ bản</strong>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Site logo </p>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="file" name="logo" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Site icon </p>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="file" name="icon" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Tên công ty / cơ sở / website </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m=>m.CompanyName, new { @class = "form-control"} )
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Địa chỉ liên hệ </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.CompanyAddress, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Số điện thoại liên hệ </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.CompanyPhone, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Đường dây nóng </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Hotline, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Địa chỉ email </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.CompanyEmail, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong class="text-primary text-uppercase">Thông tin mạng xã hội</strong>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Hỗ trợ trực tuyến (Skype) </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.OnlineSupport, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Đường dẫn Google Map </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.GoogleMapUrl, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Địa chỉ Facebook Fanpage </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.FacebookPageUrl, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Địa chỉ Google+ </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.GooglePlusPageUrl, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Địa chỉ Twitter </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.TwitterPageUrl, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <strong class="text-primary text-uppercase">Thông tin Search Engine Optimize (SEO)</strong>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Mô tả website </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.MetaDescription, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Từ khóa tìm kiếm </p>
+                            </div>
+                            <div class="col-md-12">
+                                @Html.TextAreaFor(m => m.MetaKeywords, new { @class = "form-control", @rows = "3" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <p class="label label-info">Hình ảnh share Facebook </p>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="file" name="image" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <input type="submit" value="Cập nhật" class="btn btn-primary" />
+    @Html.ActionLink("Trở về", "index")
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

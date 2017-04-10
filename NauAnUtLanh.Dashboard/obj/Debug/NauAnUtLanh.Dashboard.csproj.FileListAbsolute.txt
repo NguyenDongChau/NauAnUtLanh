@@ -57,3 +57,7 @@ D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\Newtonsoft.Json.xml
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.csprojResolveAssemblyReference.cache
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.dll
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.pdb
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\PagedList.dll
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\PagedList.Mvc.dll
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\PagedList.xml
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\PagedList.Mvc.xml

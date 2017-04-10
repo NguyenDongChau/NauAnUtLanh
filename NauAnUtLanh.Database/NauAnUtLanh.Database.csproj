@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultInfo.cs" />
+    <Compile Include="EncryptDecrypt.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NauAnUtLanhDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

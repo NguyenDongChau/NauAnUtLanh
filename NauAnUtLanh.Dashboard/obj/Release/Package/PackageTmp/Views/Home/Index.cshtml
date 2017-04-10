@@ -1,0 +1,12 @@
+﻿@using NauAnUtLanh.Database
+@{
+    ViewBag.Title = "Trang chủ";
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+}
+
+<div class="jumbotron">
+    <h1>@($"{info?.CompanyName}")</h1>
+    <p class="lead">Chào mừng trở lại trang quản trị nội dung của @($"{info?.CompanyName}")!!!</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Tìm hiểu</a></p>
+</div>

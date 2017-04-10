@@ -25,6 +25,7 @@ namespace NauAnUtLanh.Dashboard
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/local.css",
                       "~/Content/site.css"));
         }
     }

@@ -68,52 +68,11 @@ namespace NauAnUtLanh.Dashboard.Controllers
             }
         }
 
-        public async Task<ActionResult> Manage(Guid? id)
-        {
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var user = await _db.Users.FindAsync(id);
-            if (user == null) return HttpNotFound();
-            return View(user);
-        }
-
         public ActionResult Logout()
         {
             Session.Abandon();
             Session.Clear();
             return RedirectToAction("login", "account");
-        }
-
-        public async Task<ActionResult> Update(Guid? id)
-        {
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var user = await _db.Users.FindAsync(id);
-            if (user == null) return HttpNotFound();
-            return View(user);
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Update(User model)
-        {
-            if (!ModelState.IsValid) return View(model);
-            var avatar = Request.Files["Avatar"];
-            if (avatar != null && avatar.ContentLength > 0)
-            {
-                if (avatar.ContentLength > 2048000)
-                {
-                    ModelState.AddModelError("", "Dung lượng avatar không lớn hơn 2Mb");
-                    return View(model);
-                }
-                if (System.IO.File.Exists($"{Path}/{model.Avatar}")) System.IO.File.Delete($"{Path}/{model.Avatar}");
-                var folder = Server.MapPath(Path);
-                var fileName = new FileInfo(avatar.FileName);
-                var fileExt = fileName.Extension;
-                var newFileName = $"{model.Id}{fileExt}";
-                avatar.SaveAs($"{folder}/{newFileName}");
-                model.Avatar = newFileName;
-            }
-            _db.Entry(model).State = EntityState.Modified;
-            await _db.SaveChangesAsync();
-            return RedirectToAction("manage");
         }
 
         protected override void Dispose(bool disposing)

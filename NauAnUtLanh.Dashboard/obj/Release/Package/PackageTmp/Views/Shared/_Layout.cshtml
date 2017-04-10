@@ -1,0 +1,59 @@
+﻿@using NauAnUtLanh.Database
+
+@{
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="@Url.Content($"~/upload/{@info?.SiteIcon}")" />
+    <title>@ViewBag.Title - @($"{info?.CompanyName}")</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("index", "home")">
+                    <img src="@Url.Content($"~/upload/{@info?.SiteLogo}")" alt="logo" class="logo" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li><a href="@Url.Action("index", "defaultinfo")"><img src="@Url.Content("~/images/default-info-icon.png")" class="menu-icon" alt=""/> Thông tin mặc định</a></li>
+                    <li><a href="@Url.Action("index", "user")"><img src="@Url.Content("~/images/group-user-icon.png")" class="menu-icon" alt="" /> Người dùng</a></li>
+                    <li><a href="@Url.Action("index", "banner")"><img src="@Url.Content("~/images/banner-icon.png")" class="menu-icon" alt=""/> Hình ảnh banner</a></li>
+                    <li><a href="@Url.Action("index", "category")"><img src="@Url.Content("~/images/category-icon.png")" class="menu-icon" alt=""/> Chủng loại món ăn</a></li>
+                    <li><a href="@Url.Action("index", "product")"><img src="@Url.Content("~/images/product-icon.png")" class="menu-icon" alt=""/> Món ăn</a></li>
+                    <li><a href="@Url.Action("index", "menu")"><img src="@Url.Content("~/images/food-menu-icon.png")" class="menu-icon" alt=""/> Thực đơn có sẵn</a></li>
+                    <li><a href="@Url.Action("index", "activity")"><img src="@Url.Content("~/images/photo-album-icon.png")" class="menu-icon" alt="" /> Hình ảnh hoạt động</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li class="dropdown user-dropdown">
+                        @Html.Partial("_LoginPartial")
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

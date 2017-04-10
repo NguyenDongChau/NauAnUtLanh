@@ -1,0 +1,46 @@
+﻿@using NauAnUtLanh.Database
+@{
+    if (Session["UserId"] != null)
+    {
+        var userId = Guid.Parse(Session["UserId"].ToString());
+        var db = new NauAnUtLanhDbContext();
+        var admin = db.Users.FindAsync(userId).Result;
+        if (admin != null)
+        {
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                @{
+                    if (!string.IsNullOrEmpty(admin.Avatar))
+                    {
+                        <img src="@Url.Content($"~/upload/employee/{admin.Avatar}")" alt="" class="menu-icon"/>
+                        @admin.FullName<b class="caret"></b>
+                    }
+                    else
+                    {
+                        if (admin.Gender)
+                        {
+                            <img src="@Url.Content("~/images/male-icon.png")" alt="" class="menu-icon"/>
+                            @admin.FullName<b class="caret"></b>
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/images/female-icon.png")" alt="" class="menu-icon" /> @admin.FullName<b class="caret"></b>
+                        }
+                    }
+                }
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="@Url.Action("manage", "personal", new { id = admin.Id})">
+                        <img src="@Url.Content("~/images/profile-icon.png")" class="menu-icon" alt="profile" /> Thông tin tài khoản 
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="@Url.Action("logout", "account")">
+                        <img src="@Url.Content("~/images/logout-icon.png")" class="menu-icon" alt="logout" /> Logout
+                    </a> 
+                </li>
+            </ul>
+        }
+    }
+}
