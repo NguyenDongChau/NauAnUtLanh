@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using NauAnUtLanh.Dashboard.Models;
 using NauAnUtLanh.Database;
 using PagedList;
 
@@ -25,16 +26,35 @@ namespace NauAnUtLanh.Dashboard.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(User model)
+        public async Task<ActionResult> Create(UserViewModel model)
         {
+            if (!ModelState.IsValid) return View(model);
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                Email = model.Email,
+                Password = EncryptDecrypt.GetMd5(model.Password),
+                FullName = model.FullName,
+                Gender = model.Gender,
+                BirthDate = model.BirthDate,
+                Address = model.Address,
+                Phone = model.Address,
+                CreatedTime = DateTime.Now,
+                Activated = true
+            };
+            _db.Users.Add(user);
+            await _db.SaveChangesAsync();
             return RedirectToAction("index");
         }
 
         [HttpPost]
-        public async Task<bool> ChangeActivation(Guid? id)
+        public async Task ChangeActivation(Guid id)
         {
-            if (true) return false;
-            return true;
+            var user = await _db.Users.FindAsync(id);
+            if (user == null) return;
+            user.Activated = !user.Activated;
+            _db.Entry(user).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
         }
 
         protected override void Dispose(bool disposing)

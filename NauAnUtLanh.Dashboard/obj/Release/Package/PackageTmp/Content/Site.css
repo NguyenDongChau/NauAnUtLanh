@@ -22,7 +22,8 @@
 }
 
 .logo {
-    height: 30px;
+    height: 50px;
+    margin-top: -13px;
 }
 
 .menu-icon {
@@ -35,5 +36,11 @@
 .full-screen-map {
     width: 100%;
     min-height: 400px;
+    max-height: 600px;
     border: none;
+}
+
+.user-avatar {
+    height: 64px;
+    width: 64px;
 }

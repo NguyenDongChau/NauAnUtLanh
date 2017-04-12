@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Net;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using NauAnUtLanh.Dashboard.Models;
@@ -76,12 +75,20 @@ namespace NauAnUtLanh.Dashboard.Controllers
             {
                 if (logo.ContentLength > 2048000)
                 {
-                    ModelState.AddModelError("", "Hình ảnh upload không vượt quá 2Mb");
+                    ModelState.AddModelError("", "File upload không vượt quá 2Mb");
                     return View(model);
                 }
                 var folder = Server.MapPath(Path);
                 var fileName = new System.IO.FileInfo(logo.FileName);
                 var fileExt = fileName.Extension;
+                if (fileExt.ToLower() != ".png" && 
+                    fileExt.ToLower() != ".jpg" && 
+                    fileExt.ToLower() != ".jpeg" &&
+                    fileExt.ToLower() != ".bmp")
+                {
+                    ModelState.AddModelError("", "Logo phải là .png/.jpg/.jpeg/.bmp");
+                    return View(model);
+                }
                 var newFileName = $"logo{fileExt}";
                 logo.SaveAs($"{folder}/{newFileName}");
                 info.SiteLogo = newFileName;
@@ -91,12 +98,21 @@ namespace NauAnUtLanh.Dashboard.Controllers
             {
                 if (icon.ContentLength > 2048000)
                 {
-                    ModelState.AddModelError("", "Hình ảnh upload không vượt quá 2Mb");
+                    ModelState.AddModelError("", "File upload không vượt quá 2Mb");
                     return View(model);
                 }
                 var folder = Server.MapPath(Path);
                 var fileName = new System.IO.FileInfo(icon.FileName);
                 var fileExt = fileName.Extension;
+                if (fileExt.ToLower() != ".png" &&
+                    fileExt.ToLower() != ".jpg" &&
+                    fileExt.ToLower() != ".jpeg" &&
+                    fileExt.ToLower() != ".bmp" &&
+                    fileExt.ToLower() != ".ico")
+                {
+                    ModelState.AddModelError("", "Icon phải là .png/.jpg/.jpeg/.bmp/.ico");
+                    return View(model);
+                }
                 var newFileName = $"favicon{fileExt}";
                 icon.SaveAs($"{folder}/{newFileName}");
                 info.SiteIcon = newFileName;
@@ -106,12 +122,20 @@ namespace NauAnUtLanh.Dashboard.Controllers
             {
                 if (image.ContentLength > 2048000)
                 {
-                    ModelState.AddModelError("", "Hình ảnh upload không vượt quá 2Mb");
+                    ModelState.AddModelError("", "File upload không vượt quá 2Mb");
                     return View(model);
                 }
                 var folder = Server.MapPath(Path);
                 var fileName = new System.IO.FileInfo(image.FileName);
                 var fileExt = fileName.Extension;
+                if (fileExt.ToLower() != ".png" &&
+                    fileExt.ToLower() != ".jpg" &&
+                    fileExt.ToLower() != ".jpeg" &&
+                    fileExt.ToLower() != ".bmp")
+                {
+                    ModelState.AddModelError("", "Hình ảnh upload phải là .png/.jpg/.jpeg/.bmp");
+                    return View(model);
+                }
                 var newFileName = $"{DateTime.Now:yyyyMMddhhmmssfff}{fileExt}";
                 image.SaveAs($"{folder}/{newFileName}");
                 info.MetaImage = newFileName;

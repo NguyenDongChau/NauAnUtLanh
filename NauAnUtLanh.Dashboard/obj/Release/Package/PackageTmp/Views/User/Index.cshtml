@@ -1,0 +1,85 @@
+﻿@model PagedList.IPagedList<NauAnUtLanh.Database.User>
+
+@{
+    ViewBag.Title = "Danh sách tài khoản";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+<p>@Html.ActionLink("Thêm tài khoản", "create", "user")</p>
+<table class="table table-hover">
+    <tr>
+        <td>Họ tên</td>
+        <td>Ảnh đại diện</td>
+        <td>Email</td>
+        <td>Ngày sinh</td>
+        <td>Địa chỉ</td>
+        <td>Số điện thoại</td>
+        <td>Tình trạng</td>
+        <td>Ngày tạo</td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FullName</td>
+            <td>
+                @{
+                    if (!string.IsNullOrEmpty(item.Avatar))
+                    {
+                        <img class="img-responsive img-circle user-avatar" src="@Url.Content($"~/upload/user/{item.Avatar}")" alt=""/>
+                    }
+                    else
+                    {
+                        if (item.Gender)
+                        {
+                            <img class="img-responsive img-circle user-avatar" src="@Url.Content($"~/images/male-icon-2.png")" alt=""/>
+                        }
+                        else
+                        {
+                            <img class="img-responsive img-circle user-avatar" src="@Url.Content($"~/images/female-icon.png")" alt=""/>
+                        }
+                    }
+                }
+            </td>
+            <td>@item.Email</td>
+            <td>@($"{DateTime.Parse(item.BirthDate):yyyy/MM/dd}")</td>
+            <td>@item.Address</td>
+            <td>@item.Phone</td>
+            <td>
+                @Html.CheckBoxFor(m => item.Activated, new {@class = "checkbox-inline", onclick = $"return changeStatus('{item.Id}')"})
+                @{
+                    if (item.Activated)
+                    {
+                        @:Đang hoạt động
+                    }
+                    else
+                    {
+                        @:Đang tạm khóa
+                    }
+                }
+            </td>
+            <td>@($"{item.CreatedTime:yyyy/MM/dd HH:mm:ss}")</td>
+        </tr>
+    }
+</table>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function changeStatus(id) {
+            $.ajax({
+                url: '@Url.Action("changeactivation")',
+                data: { id: id },
+                error: function () {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function () {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        }
+    </script>
+}
