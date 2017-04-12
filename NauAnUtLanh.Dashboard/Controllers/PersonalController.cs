@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -14,14 +15,16 @@ namespace NauAnUtLanh.Dashboard.Controllers
         private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
         private const string Path = "~/upload/user";
 
-        public async Task<ActionResult> Manage(Guid? id)
+        public async Task<ActionResult> Manage()
         {
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var id = Guid.Parse(Session["UserId"].ToString());
             var user = await _db.Users.FindAsync(id);
             if (user == null) return HttpNotFound();
             var model = new PersonalInfoViewModel
             {
                 Id = user.Id,
+                Email = user.Email,
+                Password = user.Password,
                 FullName = user.FullName,
                 Gender = user.Gender,
                 BirthDate = user.BirthDate,
@@ -32,14 +35,40 @@ namespace NauAnUtLanh.Dashboard.Controllers
             return View(model);
         }
 
-        public async Task<ActionResult> Update(Guid? id)
+        public ActionResult ChangePassword()
         {
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ChangePassword(ChangePassViewModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            var id = Guid.Parse(Session["UserId"].ToString());
+            var user = await _db.Users.FindAsync(id);
+            if (user == null) return HttpNotFound();
+            if (!EncryptDecrypt.CompareTwoMd5String(model.CurrentPassword, user.Password))
+            {
+                ModelState.AddModelError("","Mật khẩu hiện tại không đúng");
+                return View(model);
+            }
+            user.Password = EncryptDecrypt.GetMd5(model.NewPassword);
+            _db.Entry(user).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
+            ViewData["message"] = "Thay đổi mật khẩu thành công!";
+            return View();
+        }
+
+        public async Task<ActionResult> Update()
+        {
+            var id = Guid.Parse(Session["UserId"].ToString());
             var user = await _db.Users.FindAsync(id);
             if (user == null) return HttpNotFound();
             var model = new PersonalInfoViewModel
             {
                 Id = user.Id,
+                Email = user.Email,
+                Password = user.Password,
                 FullName = user.FullName,
                 Gender = user.Gender,
                 BirthDate = user.BirthDate,
@@ -75,8 +104,8 @@ namespace NauAnUtLanh.Dashboard.Controllers
             user.FullName = model.FullName;
             user.Gender = model.Gender;
             user.BirthDate = model.BirthDate;
-            user.Address = model.Address;
             user.Phone = model.Phone;
+            user.Address = model.Address;
             _db.Entry(user).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return RedirectToAction("manage");

@@ -13,30 +13,37 @@
 
     <div class="form-group">
         <div class="col-md-6">
+            <p class="label label-info">Email</p>
             @Html.TextBoxFor(m => m.Email, new {@class = "form-control", @placeholder = "Email"})
         </div>
         <div class="col-md-6">
+            <p class="label label-info">Mật khẩu</p>
             @Html.PasswordFor(m => m.Password, new {@class = "form-control", @placeholder = "Mật khẩu"})
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-6-">
+        <div class="col-md-6">
+            <p class="label label-info">Họ tên</p>
             @Html.TextBoxFor(m => m.FullName, new {@class = "form-control", @placeholder = "Họ tên"})
         </div>
-        <div class="col-md-6-">
-            Giới tính
-            @Html.RadioButtonFor(m => m.Gender, true, new {@class = "radio-inline"}) Nam
+        <div class="col-md-6">
+            <p class="label label-info">Giới tính</p>
+            <br/>
+            @Html.RadioButtonFor(m => m.Gender, true, new {@class = "radio-inline", @checked = "checked"}) Nam
             @Html.RadioButtonFor(m => m.Gender, false, new {@class = "radio-inline"}) Nữ
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-4">
+            <p class="label label-info">Ngày sinh</p>
             @Html.TextBoxFor(m => m.BirthDate, new {@class = "form-control", @placeholder = "Ngày sinh"})
         </div>
         <div class="col-md-4">
+            <p class="label label-info">Địa chỉ</p>
             @Html.TextBoxFor(m => m.Address, new {@class = "form-control", @placeholder = "Địa chỉ"})
         </div>
         <div class="col-md-4">
+            <p class="label label-info">Số điện thoại</p>
             @Html.TextBoxFor(m => m.Phone, new {@class = "form-control", @placeholder = "Số điện thoại"})
         </div>
     </div>
@@ -54,8 +61,8 @@
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(document).ready(function () {
-            $("#Phone").keydown(function (e) {
+        $(document).ready(function() {
+            $("#Phone").keydown(function(e) {
                 if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
                 (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
                 (e.keyCode >= 35 && e.keyCode <= 40)) {
@@ -65,7 +72,7 @@
                     e.preventDefault();
                 }
             });
-            $("#BirthDate").datepicker();
+            $("#BirthDate").datetimepicker({format: 'YYYY/MM/DD'});
         })
     </script>
 }

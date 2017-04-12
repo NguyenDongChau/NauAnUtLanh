@@ -40,7 +40,7 @@ namespace NauAnUtLanh.Database.Migrations
             //        Password = "e10adc3949ba59abbe56e057f20f883e",
             //        FullName = "Nguyễn Đông Châu",
             //        Gender = true,
-            //        BirthDate = DateTime.Parse("1982/01/21"),
+            //        BirthDate = "1982/01/21",
             //        Address = "147/1 Tô Ngọc Vân, Phường Thạnh Xuân, Quận 12, Tp. Hồ Chí Minh",
             //        Phone = "0939.248.449",
             //        CreatedTime = DateTime.Now,
@@ -53,7 +53,7 @@ namespace NauAnUtLanh.Database.Migrations
             //        Password = "e10adc3949ba59abbe56e057f20f883e",
             //        FullName = "Lê Minh Hậu",
             //        Gender = true,
-            //        BirthDate = DateTime.Parse("1987/10/07"),
+            //        BirthDate = "1987/10/07",
             //        Phone = "0937.400.710",
             //        CreatedTime = DateTime.Now,
             //        Activated = true

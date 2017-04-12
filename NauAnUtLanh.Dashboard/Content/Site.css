@@ -44,3 +44,8 @@
     height: 64px;
     width: 64px;
 }
+
+.account-avatar {
+    height: 256px;
+    width: 256px;
+}

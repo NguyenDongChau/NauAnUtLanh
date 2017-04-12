@@ -43,7 +43,9 @@
                 }
             </td>
             <td>@item.Email</td>
-            <td>@($"{DateTime.Parse(item.BirthDate):yyyy/MM/dd}")</td>
+            <td>
+                @($"{item.BirthDate:yyyy/MM/dd}")
+            </td>
             <td>@item.Address</td>
             <td>@item.Phone</td>
             <td>

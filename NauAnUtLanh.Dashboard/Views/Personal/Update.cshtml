@@ -1,0 +1,95 @@
+﻿@model NauAnUtLanh.Dashboard.Models.PersonalInfoViewModel
+@{
+    ViewBag.Title = "Thông tin tài khoản";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>Cập nhật thông tin cá nhân</h4>
+<hr/>
+@using (Html.BeginForm("update", "personal", FormMethod.Post, new {@class = "form-horizontal", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false,"",new {@class="text-danger"})
+    @Html.HiddenFor(m=>m.Id)
+    @Html.HiddenFor(m=>m.Avatar)
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Họ tên</p>
+            @Html.TextBoxFor(m => m.FullName, new {@class = "form-control", @placeholder = "Họ tên"})
+        </div>
+        <div class="col-md-6">
+            <p class="label label-info">Ảnh đại diện</p>
+            <input type="file" name="UserAvatar" class="form-control" title="Upload ảnh đại diện" data-toggle="tooltip" data-placement="bottom"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Giới tính</p>
+            <br/>
+            @{
+                if (Model.Gender)
+                {
+                    @Html.RadioButtonFor(model => model.Gender, true, new {@class = "radio-inline", @name = "Gender", @checked = true})
+                    @:Nam
+                    @Html.RadioButtonFor(model => model.Gender, false, new {@class = "radio-inline", name = "Gender"})
+                    @:Nữ
+                }
+                else
+                {
+                    @Html.RadioButtonFor(model => model.Gender, true, new {@class = "radio-inline", @name = "Gender"})
+                    @:Nam
+                    @Html.RadioButtonFor(model => model.Gender, false, new {@class = "radio-inline", name = "Gender", @checked = true})
+                    @:Nữ
+                }
+            }
+        </div>
+        <div class="col-md-6">
+            <p class="label label-info">Ngày sinh</p>
+            @Html.TextBoxFor(m => m.BirthDate, "{0:yyyy/MM/dd}", new {@class = "form-control", @placeholder = "Ngày sinh"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Địa chỉ</p>
+            @Html.TextBoxFor(m => m.Address, new {@class = "form-control", @placeholder = "Địa chỉ"})
+        </div>
+        <div class="col-md-6">
+            <p class="label label-info">Số điện thoại</p>
+            @Html.TextBoxFor(m => m.Phone, new {@class = "form-control", @placeholder = "Số điện thoại"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Cập nhật" class="btn btn-primary"/>
+        </div>
+    </div>
+
+    @Html.ActionLink("Trở về", "manage", "personal")
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function() {
+            $("#Phone").keydown(function(e) {
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    return;
+                }
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+            
+            $("#BirthDate").datetimepicker({
+                format: 'YYYY/MM/DD'
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+    </script>
+}

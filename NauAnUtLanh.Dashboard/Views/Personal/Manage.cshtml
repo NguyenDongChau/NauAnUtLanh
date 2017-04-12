@@ -1,0 +1,71 @@
+﻿@model NauAnUtLanh.Dashboard.Models.PersonalInfoViewModel
+
+@{
+    ViewBag.Title = "Thông tin tài khoản";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="thumbnail">
+            @{
+                if (!string.IsNullOrEmpty(Model.Avatar))
+                {
+                    <img class="img-responsive img-circle account-avatar" src="@Url.Content($"~/upload/user/{Model.Avatar}")" alt="" />
+                }
+                else
+                {
+                    if (Model.Gender)
+                    {
+                        <img class="img-responsive img-circle account-avatar" src="@Url.Content($"~/images/male-icon-2.png")" alt="" />
+                    }
+                    else
+                    {
+                        <img class="img-responsive img-circle account-avatar" src="@Url.Content($"~/images/female-icon.png")" alt="" />
+                    }
+                }
+            }
+            <div class="caption text-center">
+                <h3>@Model.FullName</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+        <p>Họ tên: <span class="text-primary">@Model.FullName</span></p>
+        <p>Email: <span class="text-primary">@Model.Email</span></p>
+        <p>
+            Giới tính:
+            <span class="text-primary">
+            @{
+                if (Model.Gender)
+                {
+                    @:Nam
+                            }
+                else
+                {
+                    @:Nữ
+                            }
+            }
+            </span>
+        </p>
+        <p>
+            Ngày sinh: 
+            <span class="text-primary">
+                @{
+                    if (Model.BirthDate != null)
+                    {
+                        @($"{Model.BirthDate:yyyy/MM/dd}")
+                    }
+                }
+            </span>
+        </p>
+        <p>Địa chỉ: <span class="text-primary">@Model.Address</span></p>
+        <p>Số điện thoại: <span class="text-primary">@Model.Phone</span></p>
+        <hr/>
+        @Html.ActionLink("Đổi mật khẩu", "changepassword", "personal")
+        <br/>
+        @Html.ActionLink("Cập nhật thông tin cá nhân", "update", "personal")
+    </div>
+</div>
