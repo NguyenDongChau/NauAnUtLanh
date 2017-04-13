@@ -110,5 +110,14 @@ namespace NauAnUtLanh.Dashboard.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("manage");
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

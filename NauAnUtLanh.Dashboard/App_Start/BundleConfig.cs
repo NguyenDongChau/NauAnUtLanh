@@ -25,13 +25,17 @@ namespace NauAnUtLanh.Dashboard
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/moment.js",
-                      "~/Scripts/bootstrap-datetimepicker.js"
+                      "~/Scripts/bootstrap-datetimepicker.js",
+                      "~/Scripts/jquery-confirm.min.js",
+                      "~/Scripts/lightbox.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css", 
                       "~/Content/bootstrap-datetimepicker.css",
                       "~/Content/local.css",
+                      "~/Content/jquery-confirm.min.css",
+                      "~/Content/lightbox.css",
                       "~/Content/site.css"
                       ));
         }

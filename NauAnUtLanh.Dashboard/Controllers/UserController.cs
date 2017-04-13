@@ -42,7 +42,7 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 Password = EncryptDecrypt.GetMd5(model.Password),
                 FullName = model.FullName,
                 Gender = model.Gender,
-                BirthDate = model.BirthDate.ToString(),
+                BirthDate = model.BirthDate,
                 Address = model.Address,
                 Phone = model.Address,
                 CreatedTime = DateTime.Now,

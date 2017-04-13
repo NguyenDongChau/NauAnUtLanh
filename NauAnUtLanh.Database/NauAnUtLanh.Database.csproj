@@ -49,8 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Banner.cs" />
+    <Compile Include="Category.cs" />
     <Compile Include="DefaultInfo.cs" />
     <Compile Include="EncryptDecrypt.cs" />
+    <Compile Include="Food.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NauAnUtLanhDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

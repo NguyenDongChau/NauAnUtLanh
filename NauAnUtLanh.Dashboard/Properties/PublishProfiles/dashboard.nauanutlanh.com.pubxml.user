@@ -52,10 +52,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:44:38</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Dashboard.dll">
-      <publishTime>04/12/2017 17:21:12</publishTime>
+      <publishTime>04/13/2017 11:34:48</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.dll">
-      <publishTime>04/12/2017 17:18:47</publishTime>
+      <publishTime>04/13/2017 09:42:41</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/02/2017 17:46:32</publishTime>
@@ -495,6 +495,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/fonts/glyphicons-halflings-regular.woff2">
       <publishTime>04/12/2017 15:53:22</publishTime>
     </File>
+    <File Include="Content/jquery-confirm.min.css">
+      <publishTime>04/13/2017 10:14:10</publishTime>
+    </File>
+    <File Include="Content/lightbox.css">
+      <publishTime>04/13/2017 11:12:52</publishTime>
+    </File>
     <File Include="Content/local.css">
       <publishTime>04/10/2017 10:28:24</publishTime>
     </File>
@@ -660,6 +666,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/category-icon.png">
       <publishTime>04/10/2017 13:43:33</publishTime>
     </File>
+    <File Include="images/close.png">
+      <publishTime>04/13/2017 12:12:30</publishTime>
+    </File>
     <File Include="images/default-info-icon.png">
       <publishTime>04/10/2017 10:49:58</publishTime>
     </File>
@@ -675,6 +684,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/group-user-icon.png">
       <publishTime>04/09/2017 11:03:01</publishTime>
     </File>
+    <File Include="images/loading.gif">
+      <publishTime>04/13/2017 12:12:30</publishTime>
+    </File>
     <File Include="images/logout-icon.png">
       <publishTime>04/09/2017 11:05:10</publishTime>
     </File>
@@ -687,8 +699,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/news-icon-2.png">
       <publishTime>04/12/2017 08:40:00</publishTime>
     </File>
+    <File Include="images/next.png">
+      <publishTime>04/13/2017 12:12:30</publishTime>
+    </File>
     <File Include="images/photo-album-icon.png">
       <publishTime>04/10/2017 13:50:27</publishTime>
+    </File>
+    <File Include="images/prev.png">
+      <publishTime>04/13/2017 12:12:30</publishTime>
     </File>
     <File Include="images/product-icon.png">
       <publishTime>04/10/2017 13:44:24</publishTime>
@@ -744,6 +762,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-3.1.1.slim.min.map">
       <publishTime>04/10/2017 13:10:49</publishTime>
     </File>
+    <File Include="Scripts/jquery-confirm.min.js">
+      <publishTime>04/13/2017 10:14:25</publishTime>
+    </File>
     <File Include="Scripts/jquery-ui-1.12.1.js">
       <publishTime>04/12/2017 09:23:28</publishTime>
     </File>
@@ -761,6 +782,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
       <publishTime>04/08/2017 11:44:40</publishTime>
+    </File>
+    <File Include="Scripts/lightbox.js">
+      <publishTime>04/13/2017 11:13:05</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>04/08/2017 11:44:40</publishTime>
@@ -793,7 +817,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2017 13:11:11</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>04/12/2017 15:53:33</publishTime>
+      <publishTime>04/13/2017 11:13:06</publishTime>
     </File>
     <File Include="upload/favicon.ico">
       <publishTime>04/10/2017 10:37:36</publishTime>
@@ -803,6 +827,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Account/Login.cshtml">
       <publishTime>04/10/2017 10:23:42</publishTime>
+    </File>
+    <File Include="Views/Banner/Index.cshtml">
+      <publishTime>04/13/2017 12:13:24</publishTime>
     </File>
     <File Include="Views/DefaultInfo/Index.cshtml">
       <publishTime>04/10/2017 13:04:59</publishTime>
