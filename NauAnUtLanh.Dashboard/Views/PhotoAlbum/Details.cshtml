@@ -1,0 +1,76 @@
+﻿@model NauAnUtLanh.Database.PhotoAlbum
+
+@{
+    ViewBag.Title = @Model.AlbumName;
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+<p>@Html.ActionLink("Danh sách album", "Index")</p>
+<hr/>
+<div id="img-gallery"></div>
+<div class="clearfix"></div>
+<hr/>
+<div class="col-md-12">
+    <div class="form-group">
+        <a data-toggle="collapse" href="#add-imgs" aria-expanded="false" aria-controls="collapseExample">Thêm hình ảnh</a>
+        <div class="collapse" id="add-imgs">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <input type="file" class="form-control" data-toggle="tooltip" data-placement="right" title="Thêm hình ảnh vào album" id="UploadFiles" multiple />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function() {
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+            $.ajax({
+                type: "GET",
+                data: { id: '@Model.Id' },
+                url: '@Url.Action("PhotosByAlbum")',
+                dataType: "html",
+                success: function(partialView) {
+                    $("#img-gallery").html(partialView);
+                    $("#img-gallery").css("display", "block");
+                },
+                error: function(ex) {
+                    //alert("Cann't show popup: " + ex);
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#UploadFiles').change(function() {
+                var formData = new FormData();
+                var totalFiles = document.getElementById("UploadFiles").files.length;
+                for (var i = 0; i < totalFiles; i++) {
+                    var file = document.getElementById("UploadFiles").files[i];
+                    formData.append("UploadFiles", file);
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddImages", new {id = @Model.Id})',
+                    data: formData,
+                    dataType: 'html',
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        $("#img-gallery").html(response);
+                        $("#img-gallery").css("display", "block");
+                    },
+                    error: function(error) {
+
+                    }
+                });
+            });
+        });
+    </script>
+}

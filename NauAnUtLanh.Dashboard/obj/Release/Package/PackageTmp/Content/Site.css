@@ -36,6 +36,7 @@
 .full-screen-map {
     width: 100%;
     min-height: 400px;
+    height: 500px;
     max-height: 600px;
     border: none;
 }
@@ -48,4 +49,8 @@
 .account-avatar {
     height: 256px;
     width: 256px;
+}
+
+.product-icon {
+    width: 128px;
 }

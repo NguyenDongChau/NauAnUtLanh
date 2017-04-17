@@ -1,0 +1,87 @@
+﻿@model NauAnUtLanh.Dashboard.Models.ArticleViewModel
+
+@{
+    ViewBag.Title = "Danh sách tin tức";
+        
+}
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm("edit", "article", FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Hiệu chỉnh</h4>
+    <hr />
+
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @Html.HiddenFor(m=>m.Id)
+    @Html.HiddenFor(m => m.CreatedTime)
+    @Html.HiddenFor(m => m.ArticleAvatar)
+
+    <div class="form-group">
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.ArticleTitle, new { @class = "form-control", @placeholder = "Tiêu đề" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <label>Hình đại diện</label>
+            <input type="file" name="ArticleAvatar" class="form-control" data-toggle="tooltip" data-placement="right" title="Hình đại diện nên có kích thước ngang 480px và dọc 252px" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.ShortDescription, new { @class = "form-control", @rows = "3", @placeholder = "Mô tả ngắn" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.ArticleContent, new { @id = "htmleditor", @placeholder = "Nội dung" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2">
+            @Html.CheckBoxFor(model => model.Activated, new {@class = "checkbox-inline"}) Hiển thị
+        </div>
+        <div class="col-md-2">
+            @Html.CheckBoxFor(model => model.Hot, new {@class = "checkbox-inline"}) Quan trọng
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Keywords, new { @class = "form-control", @rows = "3", @placeholder = "Từ khóa" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <input type="submit" value="Lưu lại" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở lại", "index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        CKEDITOR.replace("htmleditor");
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+}

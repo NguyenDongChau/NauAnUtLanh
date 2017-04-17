@@ -1,0 +1,12 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<NauAnUtLanh.Database.FoodMenu>
+{
+    ViewBag.Title = "Danh sách thực đơn có sẵn";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+
+
+
+@Html.PagedListPager(Model, page => Url.Action("index", new { page }))

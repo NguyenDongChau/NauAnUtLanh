@@ -1,8 +1,14 @@
 ﻿@model IEnumerable<NauAnUtLanh.Database.Banner>
-
 @{
     ViewBag.Title = "Danh sách hình ảnh banner";
 }
+
+<style>
+    .thumbnail {
+        /*border: none !important;*/
+        overflow: auto !important;
+    }
+</style>
 
 @using (Html.BeginForm("upload", "banner", FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
 {
@@ -10,7 +16,7 @@
     <hr />
     <div class="form-group">
         <div class="col-md-6">
-            <input type="file" class="form-control" name="banners" multiple/>
+            <input type="file" class="form-control" name="banners" multiple />
         </div>
     </div>
     <div class="form-group">
@@ -18,7 +24,6 @@
             <ul class="list-unstyled text-info">
                 <li>*** Hình ảnh nên có kích thước rộng 1920px, cao tùy chọn và hình ảnh có kích thước tương đồng để hiển thị tốt nhất</li>
                 <li>*** Hình ảnh sau khi tải lên sẽ không hiển thị ngay, cần được hiệu chỉnh có hiển thị hay không và thứ tự hiển thị</li>
-                <li>*** Thứ tự hiển thị chỉ đếm từ 1 đến 5, lớn hơn sẽ không hiển thị</li>
             </ul>
         </div>
     </div>
@@ -28,27 +33,24 @@
         </div>
     </div>
 }
-
 <div class="clearfix"></div>
-
 <h2>@ViewBag.Title</h2>
 <hr />
-
 <div class="row">
     @{
         foreach (var banner in Model)
         {
             <div class="col-xs-6 col-md-3">
                 <div class="thumbnail">
-                    <a href="@($"#hiddenHtml{banner.Id}")" data-toggle="modal" data-lightbox="roadtrip">
+                    <a href="@Url.Content($"~/upload/banner/{@banner.BannerImage}")" data-toggle="modal" data-lightbox="roadtrip">
                         <img src="@Url.Content($"~/upload/banner/{@banner.BannerImage}")" alt="@banner.BannerImage" class="img-responsive">
                     </a>
                     <div class="caption">
-                        <p class="col-md-6 pull-left">
-                            Hiển thị @Html.CheckBoxFor(m => banner.Activated, new { @class = "checkbox-inline", onclick= $"return changeStatus('{banner.Id}')" })
+                        <p>
+                            Hiển thị @Html.CheckBoxFor(m => banner.Activated, new { @class = "checkbox-inline", onclick = $"return changeStatus('{banner.Id}')" })
                         </p>
-                        <p class="col-md-6 pull-right">Thứ tự: @Html.TextBoxFor(m=>banner.MenuOrder, new { @class = "form-inline" })</p>
-                        <p class="col-md-6 pull-left">
+                        <p>Thứ tự: @Html.TextBoxFor(m => banner.MenuOrder, new { @class = "form-inline", onchange = $"return updateOrder('{banner.Id}',$(this).val())" })</p>
+                        <p>
                             <a href="#" id="btn-del" class="btn btn-danger" onclick="deleteImg('@banner.Id')">Xóa</a>
                         </p>
                     </div>
@@ -57,52 +59,63 @@
         }
     }
 </div>
-
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(document).ready(function() {
-                $('[data-toggle="tooltip"]').tooltip();
-                function deleteImg(id) {
-                    $.confirm({
-                        title: 'Cảnh báo!!!',
-                        content: 'Bạn có chắc muốn xóa?',
-                        buttons: {
-                            confirm: function() {
-                                $.ajax({
-                                    url: '@Url.Action("remove")',
-                                    data: { id },
-                                    error: function() {
-                                        alert('Không thể truy xuất dữ liệu');
-                                    },
-                                    dataType: 'text',
-                                    success: function() {
-                                        location.reload();
-                                    },
-                                    type: 'POST'
-                                });
+        $('[data-toggle="tooltip"]').tooltip();
+        function deleteImg(id) {
+            $.confirm({
+                title: 'Cảnh báo!!!',
+                content: 'Bạn có chắc muốn xóa?',
+                buttons: {
+                    confirm: function() {
+                        $.ajax({
+                            url: '@Url.Action("remove")',
+                            data: { id },
+                            error: function() {
+                                alert('Không thể truy xuất dữ liệu');
                             },
-                            cancel: function() {
-                                return;
-                            }
-                        }
-                    });
+                            dataType: 'text',
+                            success: function() {
+                                location.reload();
+                            },
+                            type: 'POST'
+                        });
+                    },
+                    cancel: function() {
+                        return;
+                    }
                 }
-                function changeStatus(id) {
-                    $.ajax({
-                        url: '@Url.Action("changestatus")',
-                        data: { id: id },
-                        error: function() {
-                            alert('Can not retrieve data');
-                        },
-                        dataType: 'text',
-                        success: function() {
-                            location.reload();
-                        },
-                        type: 'POST'
-                    });
-                }
-            }
-        );
+            });
+        }
+        function changeStatus(id) {
+            $.ajax({
+                url: '@Url.Action("changestatus")',
+                data: { id: id },
+                error: function() {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function() {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        };
+
+        function updateOrder(id, order) {
+            $.ajax({
+                url: '@Url.Action("updateorder")',
+                data: { id: id, order: order },
+                error: function() {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function() {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        };
     </script>
 }

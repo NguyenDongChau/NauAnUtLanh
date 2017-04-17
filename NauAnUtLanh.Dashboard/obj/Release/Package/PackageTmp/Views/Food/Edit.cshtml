@@ -1,0 +1,71 @@
+﻿@using NauAnUtLanh.Dashboard.Controllers
+@model NauAnUtLanh.Dashboard.Models.FoodViewModel
+@{
+    ViewBag.Title = "Danh sách món ăn";
+    var cc = new CategoryController();
+    var categoryList = cc.GetList();
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>Hiệu chỉnh</h4>
+<hr />
+
+@using (@Html.BeginForm("edit", "food", FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @Html.HiddenFor(m=>m.Id)
+    @Html.HiddenFor(m=>m.Avatar)
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Chủng loại món ăn</p>
+            @Html.DropDownListFor(m => m.CategoryId, categoryList, new {@class = "form-control"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Tên món ăn</p>
+            @Html.TextBoxFor(m => m.FoodName, new {@class = "form-control", @placeholder = "Tên món ăn"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Hình thức món ăn</p>
+            @Html.TextBoxFor(m => m.FoodType, new { @class = "form-control", @placeholder = "Hình thức món ăn", @title = "Ví dụ: tráng miệng, lẩu, nướng than, nướng ngói, blah blah...", @data_toggle = "tooltip", @data_placement = "bottom" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Ảnh đại diện</p>
+            <input type="file" name="Avatar" class="form-control" title="Upload hình đại diện cho món ăn" data-toggle="tooltip" data-placement="bottom"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            @Html.CheckBoxFor(m => m.Activated, new { @class = "checkbox-inline" }) Kích hoạt
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <input type="submit" value="Cập nhật" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+<hr />
+<p>@Html.ActionLink("Trở về", "index")</p>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+    </script>
+}

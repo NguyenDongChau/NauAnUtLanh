@@ -1,0 +1,58 @@
+﻿@model IEnumerable<NauAnUtLanh.Database.Category>
+
+@{
+    ViewBag.Title = "Danh sách loại món ăn";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+<p>@Html.ActionLink("Thêm loại món ăn", "create")</p>
+<table class="table table-hover">
+    <tr>
+        <th>Tên loại món ăn</th>
+        <th>Tình trạng</th>
+        <th>Ngày tạo</th>
+        <th></th>
+    </tr>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>@category.CategoryName</td>
+            <td>
+                @Html.CheckBoxFor(m => category.Activated, new {@class = "checkbox-inline", onclick = $"return changeStatus('{category.Id}')"})
+                @{
+                    if (category.Activated)
+                    {
+                        @:Đang kích hoạt
+                    }
+                    else
+                    {
+                        @:Đang ẩn
+                    }
+                }
+            </td>
+            <td>@($"{category.CreatedTime:dd/MM/yyyy HH:mm:ss}")</td>
+            <td>@Html.ActionLink("Hiệu chỉnh", "edit", new {id = category.Id})</td>
+        </tr>
+    }
+</table>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function changeStatus(id) {
+            $.ajax({
+                url: '@Url.Action("changestatus")',
+                data: { id: id },
+                error: function () {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function () {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        }
+    </script>
+}

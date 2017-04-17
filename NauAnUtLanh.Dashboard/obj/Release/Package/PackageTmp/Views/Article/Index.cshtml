@@ -1,0 +1,79 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<NauAnUtLanh.Database.Article>
+
+@{
+    ViewBag.Title = "Danh sách bài viết";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+@using (@Html.BeginForm("index", "article"))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.ActionLink("Viết bài mới", "create")
+            </div>
+            <div class="col-md-2">
+                @Html.TextBox("keyword", "", new {@class = "form-control", @placeholder = "Từ khóa"})
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Tìm kiếm" class="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+}
+<table class="table table-hover">
+    <tr>
+        <th>
+            Tiêu đề
+        </th>
+        <th>
+            Ngày viết
+        </th>
+        <th>
+            Hiển thị
+        </th>
+        <th>
+            Tin quan trọng
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleTitle)
+
+            </td>
+            <td>
+                @($"{item.CreatedTime:dd/MM/yyyy HH:mm:ss}")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hot)
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                @Html.ActionLink("Chi tiết", "details", new { id = item.Id }) |
+                @Html.ActionLink("Hiệu chỉnh", "edit", new { id = item.Id }) |
+                @Html.ActionLink("Xóa", "delete", new { id = item.Id }, new { onclick = "return confirm('Có chắc chắn muốn xóa bài viết?')" })
+            </td>
+        </tr>
+                    }
+
+</table>
+
+@($"Tổng số: {ViewData["total"]:0,0}")
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new {page}))
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

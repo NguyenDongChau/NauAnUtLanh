@@ -1,0 +1,44 @@
+﻿@model NauAnUtLanh.Dashboard.Models.ImageGallery
+
+@{
+    var imgNameList = Model.ImageNameList;
+    foreach (var img in imgNameList)
+    {
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+            <a href="@Url.Content($"~/upload/album/{Model.FolderName}/{img}")" data-lightbox="roadtrip">
+                <img class="thumbnail img-responsive my-thumbnail" src="@Url.Content($"~/upload/album/{Model.FolderName}/{img}")" alt="@img">
+            </a>
+            <a href="#" id="btn-del" class="my-del-icon" onclick="deleteImg('@Model.FolderName','@img')"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+    }
+}
+
+<script>
+    function deleteImg(album, imgname) {
+        $.confirm({
+            title: 'Cảnh báo!!!',
+            content: 'Chắc chắn xóa ảnh này?',
+            buttons: {
+                confirm: function () {
+                    $.ajax({
+                        url: '@Url.Action("Delete")',
+                        data: { album, imgname },
+                        error: function () {
+                            alert('Can not retrieve data');
+                        },
+                        dataType: 'text',
+                        success: function () {
+                            location.reload();
+                        },
+                        type: 'POST'
+                    });
+                },
+                cancel: function () {
+                    return;
+                }
+            }
+        });
+        
+    }
+
+</script>

@@ -19,5 +19,9 @@ namespace NauAnUtLanh.Database
         public DbSet<User> Users { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<FoodMenu> FoodMenus { get; set; }
+        public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
+        public DbSet<Article> Articles { get; set; }
     }
 }

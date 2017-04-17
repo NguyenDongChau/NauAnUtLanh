@@ -36,6 +36,7 @@
 .full-screen-map {
     width: 100%;
     min-height: 400px;
+    height: 500px;
     max-height: 600px;
     border: none;
 }
@@ -48,4 +49,19 @@
 .account-avatar {
     height: 256px;
     width: 256px;
+}
+
+.product-icon {
+    width: 128px;
+}
+
+.my-del-icon {
+    position: absolute !important;
+    top: -5px !important;
+    right: 5px !important;
+    color: red;
+}
+
+.my-del-icon .thumbnail {
+    border: none !important;
 }

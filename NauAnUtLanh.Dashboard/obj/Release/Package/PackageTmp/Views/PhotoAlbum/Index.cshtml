@@ -1,0 +1,48 @@
+﻿@using NauAnUtLanh.Database
+@using PagedList.Mvc
+@model PagedList.IPagedList<PhotoAlbum>
+
+@{
+    ViewBag.Title = "Album ảnh";
+    var db = new NauAnUtLanhDbContext();
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+<p>
+    @Html.ActionLink("Tạo album", "create")
+</p>
+<hr/>
+@{
+    foreach (var album in Model)
+    {
+        var folder = Url.Content($"~/upload/album/{album.Id}");
+        if (Directory.Exists(Server.MapPath(folder)))
+        {
+            var files = Directory.GetFiles(Server.MapPath(folder)).ToList();
+            if (files.Any())
+            {
+                var file = files.FirstOrDefault();
+                var firstImg = new FileInfo(file).Name;
+                if (!string.IsNullOrEmpty(firstImg))
+                {
+                    <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+                        <a href="@Url.Action("details", "photoalbum", new {id = album.Id})" class="thumbnail">
+                            <img src="@Url.Content($"{folder}/{firstImg}")" alt="@album.AlbumName" class="img-responsive my-thumbnail">
+                            <p class="text-primary text-center text-uppercase">@album.AlbumName</p>
+                        </a>
+                    </div>
+                }
+            }
+
+        }
+        else
+        {
+            @:Chưa có album ảnh 
+        }
+    }
+}
+<div class="clearfix"></div>
+<hr/>
+@Html.PagedListPager(Model, page => Url.Action("index", new { page }))
+

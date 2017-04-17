@@ -1,0 +1,124 @@
+﻿@using NauAnUtLanh.Dashboard.Controllers
+@using NauAnUtLanh.Database
+@using PagedList.Mvc
+@model PagedList.IPagedList<Food>
+
+@{
+    ViewBag.Title = "Danh sách món ăn";
+    var db = new NauAnUtLanhDbContext();
+    var cc = new CategoryController();
+    var categoryList = cc.GetList();
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<p>@Html.ActionLink("Thêm món ăn mới", "create")</p>
+<hr />
+@using (Html.BeginForm("index", "food", FormMethod.Get, new { @class = "form-horizontal" }))
+{
+    <div class="form-group">
+        <div class="col-md-6">
+            @Html.DropDownList("CategoryId", categoryList, new { @class = "form-control" })
+        </div>
+        <div class="col-md-6">
+            <input class="btn btn-primary" value="Tìm kiếm" type="submit" />
+        </div>
+    </div>
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>Tên món ăn</th>
+        <th>Ảnh đại diện</th>
+        <th>Chủng loại món ăn</th>
+        <th>Hình thức món ăn</th>
+        <th>Tình trạng</th>
+        <th>Ngày tạo</th>
+        <th></th>
+    </tr>
+    @foreach (var food in @Model)
+    {
+        <tr>
+            <td>@food.FoodName</td>
+            <td>
+                @{
+                    if (string.IsNullOrEmpty(food.Avatar))
+                    {
+                        <img class="img-responsive product-icon" src="@Url.Content("~/images/food-icon.png")" alt="" />
+                    }
+                    else
+                    {
+                        <img class="img-responsive product-icon" src="@Url.Content($"~/upload/food/{food.Avatar}")" alt="" />
+                    }
+                }
+            </td>
+            <td>
+                @{
+                    var category = db.Categories.Find(food.CategoryId);
+                    if (category != null)
+                    {
+                        @category.CategoryName
+                    }
+                    else
+                    {
+                        @:Không thuộc chủng loại nào
+                    }
+                }
+            </td>
+            <td>
+                @{
+                    if (string.IsNullOrEmpty(food.FoodType))
+                    {
+                        @:Món ăn thông thường
+                    }
+                    else
+                    {
+                        @food.FoodType
+                    }
+                }
+            </td>
+            <td>
+
+                @{
+                    if (food.Activated)
+                    {
+                        <a href="#" onclick="return changeStatus('@food.Id')">
+                            <img src="@Url.Content("~/images/activated-icon.png")" class="menu-icon" alt="Đang hiển thị" title="Đang hiển thị" />
+                        </a>
+
+                    }
+                    else
+                    {
+                        <a href="#" onclick="return changeStatus('@food.Id')">
+                            <img src="@Url.Content("~/images/inactive-icon.png")" class="menu-icon" alt="Tạm ẩn" title="Tạm ẩn" />
+                        </a>
+                    }
+                }
+            </td>
+            <td>@($"{food.CreatedTime:dd/MM/yyyy HH:mm:ss}")</td>
+            <td>@Html.ActionLink("Hiệu chỉnh", "edit", new { id = food.Id })</td>
+        </tr>
+                    }
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("index", new { page }))
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function changeStatus(id) {
+            $.ajax({
+                url: '@Url.Action("changestatus")',
+                data: { id: id },
+                error: function () {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function () {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        }
+    </script>
+}
