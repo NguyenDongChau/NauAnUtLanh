@@ -25,19 +25,11 @@
 }
 <table class="table table-hover">
     <tr>
-        <th>
-            Tiêu đề
-        </th>
-        <th>
-            Ngày viết
-        </th>
-        <th>
-            Hiển thị
-        </th>
-        <th>
-            Tin quan trọng
-        </th>
-        <th></th>
+        <th>Tiêu đề</th>
+        <th>Hình ảnh</th>
+        <th>Ngày viết</th>
+        <th>Hiển thị</th>
+        <th>Tin quan trọng</th>
         <th></th>
     </tr>
 
@@ -46,7 +38,18 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ArticleTitle)
-
+            </td>
+            <td>
+                @{
+                    if (string.IsNullOrEmpty(item.ArticleAvatar))
+                    {
+                        <img src="@Url.Content("~/images/photo-icon.png")" class="img-responsive product-icon" alt=""/>
+                    }
+                    else
+                    {
+                        <img src="@Url.Content($"~/upload/article/{item.ArticleAvatar}")" class="img-responsive product-icon" alt="" />
+                    }
+                }
             </td>
             <td>
                 @($"{item.CreatedTime:dd/MM/yyyy HH:mm:ss}")

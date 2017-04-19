@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -14,6 +16,8 @@ namespace NauAnUtLanh.Dashboard.Controllers
     {
         private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
         private const int PageSize = 30;
+        private const string Path = "~/upload/foodmenu";
+        private List<string> _foodIdList;
 
         public async Task<ActionResult> Index(int? page)
         {
@@ -36,10 +40,25 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 Id = Guid.NewGuid(),
                 MenuName = model.MenuName,
                 Price = model.Price,
-                FoodId = model.FoodId,
+                FoodIdList = model.FoodIdList,
                 Activated = model.Activated,
                 CreateTime = DateTime.Now
             };
+            if (!Directory.Exists(Server.MapPath(Path))) Directory.CreateDirectory(Server.MapPath(Path));
+            var avatar = Request.Files["Avatar"];
+            if (avatar != null && avatar.ContentLength > 0)
+            {
+                if (avatar.ContentLength > 2048000)
+                {
+                    ModelState.AddModelError("", "Hình ảnh có dung lượng không quá 2Mb");
+                    return View(model);
+                }
+                var fileInfo = new FileInfo(avatar.FileName);
+                var fileExt = fileInfo.Extension;
+                var newFileName = $"{menu.Id}{fileExt}";
+                avatar.SaveAs(Server.MapPath($"{Server.MapPath(Path)}/{newFileName}"));
+                menu.Avatar = newFileName;
+            }
             _db.FoodMenus.Add(menu);
             await _db.SaveChangesAsync();
             return RedirectToAction("index");
@@ -52,10 +71,12 @@ namespace NauAnUtLanh.Dashboard.Controllers
             if (menu == null) return HttpNotFound();
             var model = new FoodMenuViewModel
             {
+                Id = menu.Id,
                 MenuName = menu.MenuName,
                 Price = menu.Price,
-                FoodId = menu.FoodId,
-                Activated = menu.Activated
+                Activated = menu.Activated,
+                FoodIdList = menu.FoodIdList,
+                Avatar = menu.Avatar
             };
             return View(model);
         }
@@ -68,22 +89,65 @@ namespace NauAnUtLanh.Dashboard.Controllers
             if (menu == null) return HttpNotFound();
             menu.MenuName = model.MenuName;
             menu.Price = model.Price;
-            menu.FoodId = model.FoodId;
             menu.Activated = model.Activated;
+            menu.FoodIdList = model.FoodIdList;
+            var avatar = Request.Files["Avatar"];
+            if (avatar != null && avatar.ContentLength > 0)
+            {
+                if (avatar.ContentLength > 2048000)
+                {
+                    ModelState.AddModelError("", "Hình ảnh có dung lượng không quá 2Mb");
+                    return View(model);
+                }
+                var fileInfo = new FileInfo(avatar.FileName);
+                var fileExt = fileInfo.Extension;
+                var newFileName = $"{menu.Id}{fileExt}";
+                avatar.SaveAs(Server.MapPath($"{Server.MapPath(Path)}/{newFileName}"));
+                menu.Avatar = newFileName;
+            }
             _db.Entry(menu).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return RedirectToAction("index");
         }
 
         [HttpPost]
-        public async Task<bool> RemoveItem(Guid? menuid, Guid? foodid)
+        public async Task<bool> RemoveItem(Guid? menuid, string foodid)
         {
             if (menuid == null || foodid == null) return false;
-            var menu = await _db.FoodMenus.FirstOrDefaultAsync(x=>x.Id == menuid.Value && x.FoodId == foodid.Value);
+            var menu = await _db.FoodMenus.FirstOrDefaultAsync(x=>x.Id == menuid.Value);
             if (menu == null) return false;
+            var foodIds = menu.FoodIdList.Split(';').ToList();
+            foodIds.Remove(foodid);
+            menu.FoodIdList = String.Join(";", foodIds);
             _db.Entry(menu).State = EntityState.Deleted;
             await _db.SaveChangesAsync();
             return true;
+        }
+
+        [HttpPost]
+        public async Task<bool> ChangeStatus(Guid? id)
+        {
+            if (id == null) return false;
+            var menu = await _db.FoodMenus.FindAsync(id);
+            if (menu == null) return false;
+            menu.Activated = !menu.Activated;
+            _db.Entry(menu).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
+            return true;
+        }
+
+        [HttpPost]
+        public string AddOrRemoveFood(string id)
+        {
+            if (_foodIdList.Contains(id))
+            {
+                _foodIdList.Remove(id);
+            }
+            else
+            {
+                _foodIdList.Add(id);
+            }
+            return string.Join(";", _foodIdList.ToArray());
         }
 
         protected override void Dispose(bool disposing)

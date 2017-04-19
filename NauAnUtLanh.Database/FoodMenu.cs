@@ -9,8 +9,9 @@ namespace NauAnUtLanh.Database
         public Guid Id { get; set; }
 
         public string MenuName { get; set; }
+        public string Avatar { get; set; }
         public long Price { get; set; }
-        public Guid FoodId { get; set; }
+        public string FoodIdList { get; set; }
         public bool Activated { get; set; }
         public DateTime CreateTime { get; set; }
     }

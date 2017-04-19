@@ -4,20 +4,17 @@
     ViewBag.Title = Model.ArticleTitle;
 }
 
-<div class="article-container">
-    <div class="article-header">
-        <div class="article-title">@Model.ArticleTitle</div>
-        <div class="article-avatar-container">
-            <img src="@Url.Content($"~/upload/article/avatar/{Model.ArticleAvatar}")" alt="@Model.ArticleTitle" class="article-avatar" />
-        </div>
-        <div class="article-post-time">@($"{Model.CreatedTime:yyyy/MM/dd hh:mm:ss}")</div>
-    </div>
-    <div class="article-content">@Html.Raw(WebUtility.HtmlDecode(Model.ArticleContent))</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-    <hr />
-    <div class="article-metadata">
-        <p>Mô tả tóm tắt: <span class="text-info">@Model.ShortDescription</span></p>
-        <p>Từ khóa: <span class="text-info">@Model.Keywords</span></p>
-    </div>
+    <h2 class="text-primary text-uppercase">@Model.ArticleTitle</h2>
+    <p class="pull-right">@($"{Model.CreatedTime:dd/MM/yyyy HH:mm:ss}")</p>
+    <div class="clearfix"></div>
+    <hr/>
+    <p class="text-justify">@Html.Raw(WebUtility.HtmlDecode(Model.ArticleContent))</p>
+    <hr/>
+    <p>Mô tả tóm tắt: <span class="text-info">@Model.ShortDescription</span></p>
+    <p>Từ khóa: <span class="text-info">@Model.Keywords</span></p>
 </div>
-                    
+
+<hr/>
+@Html.ActionLink("Trở về", "index") 

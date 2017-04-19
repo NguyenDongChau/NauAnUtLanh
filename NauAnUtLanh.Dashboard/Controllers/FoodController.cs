@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -132,6 +133,17 @@ namespace NauAnUtLanh.Dashboard.Controllers
             _db.Entry(food).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<JsonResult> GetFoodsByCategory(int id)
+        {
+            var foods = await _db.Foods.Where(x => x.Activated && x.CategoryId == id).ToListAsync();
+            var list = new List<SelectListItem>();
+            foreach (var food in foods)
+            {
+                list.Add(new SelectListItem { Text = food.FoodName, Value = food.Id.ToString()});
+            }
+            return Json(list);
         }
 
         protected override void Dispose(bool disposing)

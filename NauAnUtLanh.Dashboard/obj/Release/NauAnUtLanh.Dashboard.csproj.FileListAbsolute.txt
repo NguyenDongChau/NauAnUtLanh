@@ -97,3 +97,4 @@ D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\roslyn\System.Xml.XPath.dll
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\roslyn\System.Xml.XPath.XDocument.dll
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\roslyn\vbc.exe.config
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\roslyn\vbc.rsp
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\NauAnUtLanh.Database.dll.config

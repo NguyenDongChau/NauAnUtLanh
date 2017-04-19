@@ -182,6 +182,7 @@
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\ChangePassViewModel.cs" />
     <Compile Include="Models\DefaultInfoViewModel.cs" />
+    <Compile Include="Models\FoodList.cs" />
     <Compile Include="Models\FoodMenuViewModel.cs" />
     <Compile Include="Models\FoodViewModel.cs" />
     <Compile Include="Models\ImageGallery.cs" />
@@ -342,6 +343,7 @@
     <Content Include="Scripts\ckeditor\ckeditor.asp" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1-vsdoc.js" />
     <Content Include="images\inactive-icon.png" />
     <Content Include="images\loading.gif" />
@@ -712,7 +714,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\PublishProfiles\dashboard.nauanutlanh.com.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -779,6 +780,8 @@
     <Content Include="Views\PhotoAlbum\Index.cshtml" />
     <Content Include="Views\PhotoAlbum\_PhotoGallery.cshtml" />
     <Content Include="Views\FoodMenu\Index.cshtml" />
+    <Content Include="Views\FoodMenu\Create.cshtml" />
+    <Content Include="Views\Food\_FoodList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

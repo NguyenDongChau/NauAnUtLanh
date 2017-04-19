@@ -1,12 +1,83 @@
 ﻿@using PagedList.Mvc
+
 @model PagedList.IPagedList<NauAnUtLanh.Database.FoodMenu>
-{
+
+@{
     ViewBag.Title = "Danh sách thực đơn có sẵn";
 }
 
 <h2>@ViewBag.Title</h2>
 <hr/>
+<p>@Html.ActionLink("Tạo thực đơn mới", "create")</p>
 
+<table class="table table-hover">
+    <tr>
+        <th>Tên thực đơn</th>
+        <th>Hình ảnh</th>
+        <th>Giá</th>
+        <th>Tình trạng</th>
+        <th></th>
+    </tr>
+    @foreach (var menu in Model)
+    {
+        <tr>
+            <td><strong class="text-primary">@menu.MenuName</strong></td>
+            <td>
+                @{
+                    if (string.IsNullOrEmpty(menu.Avatar))
+                    {
+                        <img src="@Url.Content("~/images/photo-icon.png")" class="product-icon" alt="@menu.MenuName"/>
+                    }
+                    else
+                    {
+                        <img src="@Url.Content($"~/upload/food/{menu.Avatar}")" class="product-icon" alt="@menu.MenuName"/>
+                    }
+                }
+            </td>
+            <td><strong class="text-danger">@($"{menu.Price:0,0}")</strong></td>
+            <td>
+                @{
+                    if (menu.Activated)
+                    {
+                        <a href="#" onclick="return changeStatus('@menu.Id')">
+                            <img src="@Url.Content("~/images/activated-icon.png")" class="menu-icon" alt="Đang hiển thị" title="Đang hiển thị"/>
+                        </a>
 
+                    }
+                    else
+                    {
+                        <a href="#" onclick="return changeStatus('@menu.Id')">
+                            <img src="@Url.Content("~/images/inactive-icon.png")" class="menu-icon" alt="Tạm ẩn" title="Tạm ẩn"/>
+                        </a>
+                    }
+                }
+            </td>
+            <td>
+                <a href="#">Xem chi tiết</a>
+            </td>
+        </tr>
+    }
+</table>
+<!-- Danh sách thực đơn tại đây -->
 
 @Html.PagedListPager(Model, page => Url.Action("index", new { page }))
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function changeStatus(id) {
+            $.ajax({
+                url: '@Url.Action("changestatus")',
+                data: { id: id },
+                error: function () {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function () {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        }
+    </script>
+}

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<NauAnUtLanh.Database.Food>
+    
+@foreach (var food in Model)
+{
+    foreach (var item in Model.AvailableFruits)
+    {
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"
+                       name="SelectedFruits"
+                       value="@item.Value" /> @item.Text
+                </label>
+            </div>
+    }
+
+}

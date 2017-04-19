@@ -97,3 +97,4 @@ D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\System.Web.WebPages.Razor.xml
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.csprojResolveAssemblyReference.cache
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.dll
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.pdb
+D:\Coding\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\NauAnUtLanh.Database.dll.config
