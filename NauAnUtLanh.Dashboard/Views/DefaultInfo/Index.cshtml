@@ -23,7 +23,7 @@
                             <p class="label label-info">Site logo </p>
                         </div>
                         <div class="col-md-12">
-                            <img src="@Url.Content($"~/upload/{@Model.SiteLogo}")" class="logo" alt="@Model.CompanyName"/>
+                            <img src="@Url.Content($"~/upload/{@Model.SiteLogo}")" class="product-icon" alt="@Model.CompanyName"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -31,7 +31,7 @@
                             <p class="label label-info">Site icon </p>
                         </div>
                         <div class="col-md-12">
-                            <img src="@Url.Content($"~/upload/{@Model.SiteIcon}")" class="logo" alt="@Model.CompanyName"/>
+                            <img src="@Url.Content($"~/upload/{@Model.SiteIcon}")" class="product-icon" alt="@Model.CompanyName"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -103,6 +103,14 @@
                         </div>
                         <div class="col-md-12">
                             <iframe src="@Model.GoogleMapUrl" allowfullscreen class="full-screen-map"></iframe>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <p class="label label-info">Facebook App Id </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="label label-info">@Model.FacebookAppId</p>
                         </div>
                     </div>
                     <div class="form-group">

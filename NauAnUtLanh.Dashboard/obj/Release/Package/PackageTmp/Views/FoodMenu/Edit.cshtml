@@ -1,0 +1,142 @@
+﻿@using NauAnUtLanh.Dashboard.Controllers
+@model NauAnUtLanh.Dashboard.Models.FoodMenuViewModel
+
+@{
+    ViewBag.Title = "Danh sách thực đơn có sẵn";
+    var cc = new CategoryController();
+    var categoryList = cc.GetList();
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>Thay đổi</h4>
+<hr />
+
+@using (@Html.BeginForm("edit", "foodmenu", FormMethod.Post, new {@class = "form-horizontal", @enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @Html.HiddenFor(m=>m.Id)
+    @Html.HiddenFor(m=>m.FoodIdList)
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Tên thực đơn</p>
+            @Html.TextBoxFor(m => m.MenuName, new {@class = "form-control", @placeholder = "Tên thực đơn"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Hình ảnh</p>
+            <input type="file" class="form-control" name="Avatar" data-toggle="tooltip" data-placement="bottom" title="Upload hình ảnh cho thực đơn"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <p class="label label-info">Giá tiền</p>
+            @Html.TextBoxFor(m => m.Price, new {@class = "form-control", @placeholder = "Giá tiền"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            @Html.CheckBoxFor(m => m.Activated, new {@class = "checkbox-inline"}) Hiển thị
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Chọn món ăn để thêm vào thực đơn</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.DropDownList("CategoryId", categoryList, new {@class = "form-control"})
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12" id="food-list"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <p class="label label-info">Danh sách món ăn hiện tại</p>
+                    <div id="selected-food-list"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+        
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <input type="submit" value="Cập nhật" class="btn btn-primary"/> 
+        </div>
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            showFoodList();
+            $("#Price").keydown(function (e) {
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    return;
+                }
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+            $("#CategoryId").change(function () {
+                $("#food-list").empty();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("getfoodsbycategory","food")',
+                    dataType: "json",
+                    data: { id: $("#CategoryId").val() },
+                    success: function (foods) {
+                        $.each(foods, function (i, food) {
+                            $("#food-list").append("<div class='col-md-3'>"+"<input type='checkbox' value='" + food.Value + "' class='checkbox-inline' onclick=\"return addFood($(this).val())\" />" + "&nbsp" + food.Text + "</div>");
+                        });
+                    },
+                    error: function (ex) {
+                        alert("Failed to retrieve data." + ex);
+                    }
+                });
+                return false;
+            });
+        });
+        function addFood(id) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("addfood","foodmenu")',
+                dataType: "text",
+                data: { id: id },
+                success: function () {
+                    $("#selected-food-list").html();
+                    showFoodList();
+                },
+                error: function () {
+                    alert('Thất bại');
+                }
+            });
+        }
+
+        function showFoodList() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getfoodlist", "food")',
+                dataType: "html",
+                success: function (partialView) {
+                    $("#selected-food-list").html(partialView);
+                    $("#selected-food-list").css("display", "block");
+                }
+            });
+        }
+    </script>
+}

@@ -31,6 +31,7 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 MetaDescription = info.MetaDescription,
                 MetaImage = info.MetaImage,
                 MetaKeywords = info.MetaKeywords,
+                FacebookAppId = info.FacebookAppId,
                 FacebookPageUrl = info.FacebookPageUrl,
                 GooglePlusPageUrl = info.GooglePlusPageUrl,
                 TwitterPageUrl = info.TwitterPageUrl
@@ -56,6 +57,7 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 MetaDescription = info.MetaDescription,
                 MetaImage = info.MetaImage,
                 MetaKeywords = info.MetaKeywords,
+                FacebookAppId = info.FacebookAppId,
                 FacebookPageUrl = info.FacebookPageUrl,
                 GooglePlusPageUrl = info.GooglePlusPageUrl,
                 TwitterPageUrl = info.TwitterPageUrl
@@ -149,6 +151,7 @@ namespace NauAnUtLanh.Dashboard.Controllers
             info.GoogleMapUrl = model.GoogleMapUrl;
             info.MetaDescription = model.MetaDescription;
             info.MetaKeywords = model.MetaKeywords;
+            info.FacebookAppId = model.FacebookAppId;
             info.FacebookPageUrl = model.FacebookPageUrl;
             info.GooglePlusPageUrl = model.GooglePlusPageUrl;
             info.TwitterPageUrl = model.TwitterPageUrl;

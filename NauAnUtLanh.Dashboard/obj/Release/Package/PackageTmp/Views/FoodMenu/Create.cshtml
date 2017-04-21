@@ -43,7 +43,7 @@
             @Html.CheckBoxFor(m => m.Activated, new {@class = "checkbox-inline"}) Hiển thị
         </div>
     </div>
-    
+
     <div class="panel panel-primary">
         <div class="panel-heading">Chọn món ăn để thêm vào thực đơn</div>
         <div class="panel-body">
@@ -56,6 +56,13 @@
                 <div class="row">
                     <div class="col-md-12" id="food-list"></div>
                 </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <p class="label label-info">Danh sách món ăn hiện tại</p>
+                    <div id="selected-food-list"></div>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -92,7 +99,7 @@
                     data: { id: $("#CategoryId").val() },
                     success: function (foods) {
                         $.each(foods, function (i, food) {
-                            $("#food-list").append("<div class='col-md-3'>"+"<input type='checkbox' value='" + food.Value + "' class='checkbox-inline' onclick=\"return addOrRemoveFood($(this).val())\" />" + "&nbsp" + food.Text + "</div>");
+                            $("#food-list").append("<div class='col-md-3'>"+"<input type='checkbox' value='" + food.Value + "' class='checkbox-inline' onclick=\"return addFood($(this).val())\" />" + "&nbsp" + food.Text + "</div>");
                         });
                     },
                     error: function (ex) {
@@ -102,20 +109,33 @@
                 return false;
             });
         });
-        function addOrRemoveFood(id) {
+       
+        function addFood(id) {
             $.ajax({
                 type: "POST",
-                url: '@Url.Action("addorremovefood","foodmenu")',
+                url: '@Url.Action("addfood","foodmenu")',
                 dataType: "text",
                 data: { id: id },
-                success: function (foodlist) {
-                    alert(foodlist);
+                success: function () {
+                    $("#selected-food-list").html();
+                    showFoodList();
                 },
-                error: function (ex) {
-                    alert(ex);
+                error: function () {
+                    alert('Thất bại');
                 }
             });
         }
-
+        
+        function showFoodList() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("getfoodlist", "food")',
+                dataType: "html",
+                success: function (partialView) {
+                    $("#selected-food-list").html(partialView);
+                    $("#selected-food-list").css("display", "block");
+                }
+            });
+        }
     </script>
 }

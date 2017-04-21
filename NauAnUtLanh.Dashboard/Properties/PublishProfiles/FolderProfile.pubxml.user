@@ -53,10 +53,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:44:38</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Dashboard.dll">
-      <publishTime>04/19/2017 16:31:46</publishTime>
+      <publishTime>04/21/2017 17:17:39</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.dll">
-      <publishTime>04/19/2017 13:43:09</publishTime>
+      <publishTime>04/21/2017 17:17:33</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.dll.config">
       <publishTime>04/08/2017 11:46:26</publishTime>
@@ -1871,13 +1871,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/19/2017 15:10:10</publishTime>
     </File>
     <File Include="Views/Article/Create.cshtml">
-      <publishTime>04/17/2017 15:37:48</publishTime>
+      <publishTime>04/20/2017 12:10:47</publishTime>
     </File>
     <File Include="Views/Article/Details.cshtml">
       <publishTime>04/17/2017 15:37:34</publishTime>
     </File>
     <File Include="Views/Article/Edit.cshtml">
-      <publishTime>04/17/2017 15:37:55</publishTime>
+      <publishTime>04/20/2017 12:11:02</publishTime>
     </File>
     <File Include="Views/Article/Index.cshtml">
       <publishTime>04/17/2017 15:29:39</publishTime>
@@ -1895,13 +1895,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/17/2017 10:19:37</publishTime>
     </File>
     <File Include="Views/DefaultInfo/Index.cshtml">
-      <publishTime>04/17/2017 10:25:35</publishTime>
+      <publishTime>04/21/2017 09:12:07</publishTime>
     </File>
     <File Include="Views/DefaultInfo/Update.cshtml">
       <publishTime>04/12/2017 10:14:44</publishTime>
     </File>
     <File Include="Views/Food/Create.cshtml">
-      <publishTime>04/17/2017 13:44:28</publishTime>
+      <publishTime>04/20/2017 10:42:42</publishTime>
     </File>
     <File Include="Views/Food/Edit.cshtml">
       <publishTime>04/17/2017 13:44:42</publishTime>
@@ -1910,13 +1910,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/17/2017 13:52:14</publishTime>
     </File>
     <File Include="Views/Food/_FoodList.cshtml">
-      <publishTime>04/19/2017 09:38:11</publishTime>
+      <publishTime>04/20/2017 18:49:13</publishTime>
     </File>
     <File Include="Views/FoodMenu/Create.cshtml">
-      <publishTime>04/19/2017 16:24:06</publishTime>
+      <publishTime>04/20/2017 18:42:47</publishTime>
+    </File>
+    <File Include="Views/FoodMenu/Details.cshtml">
+      <publishTime>04/20/2017 13:04:10</publishTime>
+    </File>
+    <File Include="Views/FoodMenu/Edit.cshtml">
+      <publishTime>04/20/2017 18:49:42</publishTime>
     </File>
     <File Include="Views/FoodMenu/Index.cshtml">
-      <publishTime>04/18/2017 16:40:33</publishTime>
+      <publishTime>04/20/2017 13:03:59</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>04/10/2017 11:57:44</publishTime>

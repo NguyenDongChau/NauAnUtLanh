@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -144,6 +145,32 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 list.Add(new SelectListItem { Text = food.FoodName, Value = food.Id.ToString()});
             }
             return Json(list);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetFoodList()
+        {
+            var foods = new List<FoodViewModel>();
+            var foodIdList = (List<string>)Session["FoodIdList"];
+            if (foodIdList != null)
+            {
+                foreach (var id in foodIdList)
+                {
+                    var foodId = Guid.Parse(id);
+                    var food = await _db.Foods.FindAsync(foodId);
+                    if (food != null)
+                    {
+                        foods.Add(new FoodViewModel
+                        {
+                            Id = food.Id,
+                            CategoryId = food.CategoryId,
+                            FoodName = food.FoodName,
+                            FoodType = food.FoodType
+                        });
+                    }
+                }
+            }
+            return PartialView("_FoodList", foods);
         }
 
         protected override void Dispose(bool disposing)

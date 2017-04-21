@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -17,13 +18,28 @@ namespace NauAnUtLanh.Dashboard.Controllers
         private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
         private const int PageSize = 30;
         private const string Path = "~/upload/foodmenu";
-        private List<string> _foodIdList;
-
+        
         public async Task<ActionResult> Index(int? page)
         {
             var pageNumber = page ?? 1;
             var menus = await _db.FoodMenus.OrderByDescending(x => x.CreateTime).ToListAsync();
             return View(menus.ToPagedList(pageNumber, PageSize));
+        }
+
+        public async Task<ActionResult> Details(Guid? id)
+        {
+            if(id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var menu = await _db.FoodMenus.FindAsync(id);
+            if (menu == null) return HttpNotFound();
+            var model = new FoodMenuViewModel
+            {
+                Id = menu.Id,
+                MenuName = menu.MenuName,
+                Avatar = menu.Avatar,
+                Price = menu.Price,
+                FoodIdList = menu.FoodIdList
+            };
+            return View(model);
         }
 
         public ActionResult Create()
@@ -35,6 +51,19 @@ namespace NauAnUtLanh.Dashboard.Controllers
         public async Task<ActionResult> Create(FoodMenuViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
+            var existed = await _db.FoodMenus.AnyAsync(x => x.MenuName == model.MenuName);
+            if (existed)
+            {
+                ModelState.AddModelError("", "Tên thực đơn đã tồn tại hãy cung cấp tên khác");
+                return View(model);
+            }
+            var foodIdList = (List<string>) Session["FoodIdList"];
+            if (foodIdList == null || foodIdList.Count <= 0)
+            {
+                ModelState.AddModelError("", "Chưa thêm món ăn vào thực đơn");
+                return View(model);
+            }
+            model.FoodIdList = string.Join(";", foodIdList.ToArray());
             var menu = new FoodMenu
             {
                 Id = Guid.NewGuid(),
@@ -56,11 +85,12 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 var fileInfo = new FileInfo(avatar.FileName);
                 var fileExt = fileInfo.Extension;
                 var newFileName = $"{menu.Id}{fileExt}";
-                avatar.SaveAs(Server.MapPath($"{Server.MapPath(Path)}/{newFileName}"));
+                avatar.SaveAs($"{Server.MapPath(Path)}/{newFileName}");
                 menu.Avatar = newFileName;
             }
             _db.FoodMenus.Add(menu);
             await _db.SaveChangesAsync();
+            Session["FoodIdList"] = null;
             return RedirectToAction("index");
         }
 
@@ -75,9 +105,9 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 MenuName = menu.MenuName,
                 Price = menu.Price,
                 Activated = menu.Activated,
-                FoodIdList = menu.FoodIdList,
                 Avatar = menu.Avatar
             };
+            Session["FoodIdList"] = menu.FoodIdList.Split(';').ToList();
             return View(model);
         }
 
@@ -87,10 +117,16 @@ namespace NauAnUtLanh.Dashboard.Controllers
             if (!ModelState.IsValid) return View(model);
             var menu = await _db.FoodMenus.FindAsync(model.Id);
             if (menu == null) return HttpNotFound();
+            var foodIdList = (List<string>) Session["FoodIdList"];
+            if (foodIdList == null || foodIdList.Count <= 0)
+            {
+                ModelState.AddModelError("", "Chưa thêm món ăn vào thực đơn");
+                return View(model);
+            }
             menu.MenuName = model.MenuName;
             menu.Price = model.Price;
             menu.Activated = model.Activated;
-            menu.FoodIdList = model.FoodIdList;
+            menu.FoodIdList = string.Join(";", foodIdList.ToArray());
             var avatar = Request.Files["Avatar"];
             if (avatar != null && avatar.ContentLength > 0)
             {
@@ -107,21 +143,8 @@ namespace NauAnUtLanh.Dashboard.Controllers
             }
             _db.Entry(menu).State = EntityState.Modified;
             await _db.SaveChangesAsync();
+            Session["FoodIdList"] = null;
             return RedirectToAction("index");
-        }
-
-        [HttpPost]
-        public async Task<bool> RemoveItem(Guid? menuid, string foodid)
-        {
-            if (menuid == null || foodid == null) return false;
-            var menu = await _db.FoodMenus.FirstOrDefaultAsync(x=>x.Id == menuid.Value);
-            if (menu == null) return false;
-            var foodIds = menu.FoodIdList.Split(';').ToList();
-            foodIds.Remove(foodid);
-            menu.FoodIdList = String.Join(";", foodIds);
-            _db.Entry(menu).State = EntityState.Deleted;
-            await _db.SaveChangesAsync();
-            return true;
         }
 
         [HttpPost]
@@ -137,17 +160,25 @@ namespace NauAnUtLanh.Dashboard.Controllers
         }
 
         [HttpPost]
-        public string AddOrRemoveFood(string id)
+        public void AddFood(string id)
         {
-            if (_foodIdList.Contains(id))
+            var foodIdList = (List<string>)Session["FoodIdList"];
+            if (foodIdList == null || foodIdList.Count <= 0)
             {
-                _foodIdList.Remove(id);
+                foodIdList = new List<string> { id };
             }
             else
             {
-                _foodIdList.Add(id);
+                if (!foodIdList.Contains(id))
+                {
+                    foodIdList.Add(id);
+                }
+                else
+                {
+                    foodIdList.Remove(id);
+                }
             }
-            return string.Join(";", _foodIdList.ToArray());
+            Session["FoodIdList"] = foodIdList;
         }
 
         protected override void Dispose(bool disposing)

@@ -1,16 +1,25 @@
-﻿@model IEnumerable<NauAnUtLanh.Database.Food>
-    
-@foreach (var food in Model)
-{
-    foreach (var item in Model.AvailableFruits)
-    {
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"
-                       name="SelectedFruits"
-                       value="@item.Value" /> @item.Text
-                </label>
-            </div>
-    }
+﻿@using NauAnUtLanh.Database
+@model IEnumerable<NauAnUtLanh.Dashboard.Models.FoodViewModel>  
 
+@{
+    var db = new NauAnUtLanhDbContext();
+    foreach (var food in Model)
+    {
+        var category = db.Categories.Find(food.CategoryId);
+        <ul>
+            <li class="text-success">
+                <a href="#" onclick="return addFood('@food.Id')">
+                    @($"{category?.CategoryName} / {food.FoodType} / {food.FoodName}")
+                </a>
+                
+            </li>
+        </ul>
+    }
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @*<script>
+        
+    </script>*@
 }

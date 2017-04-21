@@ -23,5 +23,6 @@ namespace NauAnUtLanh.Database
         public string FacebookPageUrl { get; set; }
         public string GooglePlusPageUrl { get; set; }
         public string TwitterPageUrl { get; set; }
+        public string FacebookAppId { get; set; }
     }
 }

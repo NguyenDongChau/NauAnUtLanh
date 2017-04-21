@@ -781,7 +781,9 @@
     <Content Include="Views\PhotoAlbum\_PhotoGallery.cshtml" />
     <Content Include="Views\FoodMenu\Index.cshtml" />
     <Content Include="Views\FoodMenu\Create.cshtml" />
+    <Content Include="Views\FoodMenu\Details.cshtml" />
     <Content Include="Views\Food\_FoodList.cshtml" />
+    <Content Include="Views\FoodMenu\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
