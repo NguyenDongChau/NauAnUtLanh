@@ -1,30 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using NauAnUtLanh.Database;
+using NauAnUtLanh.FrontEnd.Models;
 
 namespace NauAnUtLanh.FrontEnd.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Contact()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public async Task<ActionResult> Contact(ContactViewModel model)
         {
-            ViewBag.Message = "Your contact page.";
-
+            if (!ModelState.IsValid) return View(model);
+            var contact = new Contact
+            {
+                Id = Guid.NewGuid(),
+                FullName = model.FullName,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
+                Subject = model.Subject,
+                Content = model.Content,
+                Read = false,
+                CreatedTime = DateTime.Now
+            };
+            _db.Contacts.Add(contact);
+            await _db.SaveChangesAsync();
+            ViewData["message"] = "Bạn đã gửi thành công! Chúng tôi sẽ hồi âm lại trong thời gian sớm nhất! Xin cám ơn";
             return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

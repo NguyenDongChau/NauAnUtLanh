@@ -52,6 +52,7 @@
     <Compile Include="Article.cs" />
     <Compile Include="Banner.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Contact.cs" />
     <Compile Include="DefaultInfo.cs" />
     <Compile Include="EncryptDecrypt.cs" />
     <Compile Include="Food.cs" />

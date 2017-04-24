@@ -1,0 +1,51 @@
+﻿@using NauAnUtLanh.Database
+@using PagedList.Mvc
+@model PagedList.IPagedList<PhotoAlbum>
+
+@{
+    ViewBag.Title = "Hình ảnh";
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+    ViewBag.MetaTitle = info?.CompanyName;
+    ViewBag.MetaDescription = info?.MetaDescription;
+    ViewBag.MetaKeywords = info?.MetaKeywords;
+    ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
+}
+
+<div class="container">
+    <h2 class="text-primary">@ViewBag.Title</h2>
+    <hr/>
+    <div class="row">
+
+        @{
+            foreach (var item in Model.ToList())
+            {
+                var folder = Url.Content($"~/upload/album/{item.Id}");
+                if (Directory.Exists(Server.MapPath(folder)))
+                {
+                    var files = Directory.GetFiles(Server.MapPath(folder)).ToList();
+                    if (files.Any())
+                    {
+                        var file = files.FirstOrDefault();
+                        var firstImg = new FileInfo(file).Name;
+                        if (!string.IsNullOrEmpty(firstImg))
+                        {
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <a href="@Url.Action("details", "photoalbum", new {id = item.Id})" class="thumbnail">
+                                    <img src="@Url.Content($"{folder}/{firstImg}")" alt="@item.AlbumName" class="img-responsive my-thumbnail">
+                                    <h4 class="text-primary">@item.AlbumName</h4>
+                                </a>
+                            </div>
+                        }
+                    }
+
+                }
+            }
+        }
+        <div class="clearfix"></div>
+        <span style="margin: auto; width: 100%; text-align: center;">@Html.PagedListPager(Model, page => Url.Action("Index", new {page}))</span>
+    </div>
+</div>
+
+
+

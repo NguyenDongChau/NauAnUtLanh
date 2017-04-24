@@ -1,17 +1,96 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@using NauAnUtLanh.Database
+@model NauAnUtLanh.FrontEnd.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Liên hệ";
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+    ViewBag.MetaTitle = info?.CompanyName;
+    ViewBag.MetaDescription = info?.MetaDescription;
+    ViewBag.MetaKeywords = info?.MetaKeywords;
+    ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<iframe src="@info?.GoogleMapUrl" class="embed-responsive-item full-screen-map" allowfullscreen></iframe>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="container body-content">
+    <div class="col-md-3">
+        <h3>Địa chỉ</h3>
+        <hr />
+        <h5 class="text-uppercase text-primary"><strong>@info.CompanyName</strong></h5>
+        <p><strong>Địa chỉ:</strong> <span class="text-info">@info.CompanyAddress</span></p>
+        <p><strong>Hotline:</strong> <span class="text-info">@info.Hotline</span></p>
+        <p>
+            <strong>Email:</strong> <a href="@($"mailto:{info.CompanyEmail}")" class="text-info">@info.CompanyEmail</a>
+        </p>
+        <p>
+            <strong>Skype:</strong>
+            <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
+            <div id="@($"SkypeButton_Call_{info.OnlineSupport}_1")">
+                <script type="text/javascript">
+                    Skype.ui({
+                        "name": "chat",
+                        "element": "@($"SkypeButton_Call_{info.OnlineSupport}_1")",
+                        "participants": ["@info.OnlineSupport"],
+                        "imageSize": 24
+                    });
+                </script>
+            </div>
+        </p>
+    </div>
+    <div class="col-md-9">
+        <h3>Liên hệ</h3>
+        <hr />
+        @using (@Html.BeginForm("contact", "home", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.FullName, new {@class = "form-control", @placeholder = "Họ tên"})
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.Email, new {@class = "form-control", @placeholder = "Email"})
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.PhoneNumber, new {@class = "form-control", @placeholder = "Số điện thoại", @id = "PhoneNumber"})
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(m=>m.Subject, new { @class = "form-control", @placeholder = "Tiêu đề" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @placeholder = "Nội dung", @rows = "5", @id = "htmleditor" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="submit" value="Gửi liên hệ" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="text-success bg-info">@ViewData["message"]</div>
+        }
+    </div>
+</div>
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $("#PhoneNumber").keydown(function (e) {
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    return;
+                }
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}

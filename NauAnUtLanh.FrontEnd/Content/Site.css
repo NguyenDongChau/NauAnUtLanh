@@ -1,24 +1,77 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 0;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding:0;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
+
+.navbar.transparent.navbar-inverse .navbar-inner {
+    background: rgba(0,0,0,0.4);
+}
+
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.my-logo {
+    width: 150px;
 }
+
+.nav > li:hover {
+    background-color: transparent !important;
+}
+
+.nav > li > a {
+    color: white !important;
+    font-size: 20px !important;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    color: orangered !important;
+    background-color: transparent !important;
+}
+
+.full-screen-map {
+    width: 100%;
+    min-height: 400px;
+    height: 500px;
+    max-height: 600px;
+    border: none;
+}
+
+.my-footer {
+    background-color: #454547;
+    color: white;
+    line-height: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: -15px;
+    padding-right: -15px;
+    margin-top: 20px;
+    bottom: 0;
+}
+
+.footer-icon {
+    height: 42px;
+    margin: 0 3px;
+}
+
+.thumbnail {
+    height: 290px !important;
+}
+
+    .thumbnail:hover {
+        -webkit-box-shadow: 0 0 30px black;
+        -ms-box-shadow: 0 0 30px black;
+        box-shadow: 0 0 30px black;
+    }
+
+    .thumbnail .caption {
+        padding: 5px !important;
+    }

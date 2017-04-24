@@ -1,39 +1,81 @@
-﻿<!DOCTYPE html>
+﻿@using NauAnUtLanh.Database
+@{
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="shortcut icon" type="image/png" href="@Url.Content($"~/upload/{info?.SiteIcon}")" />
+    <title>@ViewBag.Title - @($"{info?.CompanyName}")</title>
+    <meta property="fb:app_id" content="@info?.FacebookAppId" /> 
+    <meta property="og:type" content="website" /> 
+    <meta property="og:url" content="@Request.Url" /> 
+    <meta property="og:title" content="@ViewBag.MetaTitle" /> 
+    <meta property="og:image" content="@ViewBag.MetaImage" /> 
+    <meta property="og:description" content="@ViewBag.MetaDescription" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+<div class="navbar transparent navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("index", "home")">
+                <img alt="Logo" src="@Url.Content($"~/upload/{info?.SiteLogo}")" class="my-logo center-block" title="@info?.CompanyName">
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-right">
+                <li>@Html.ActionLink("Trang chủ", "index", "home")</li>
+                <li>@Html.ActionLink("Món ăn", "index", "food")</li>
+                <li>@Html.ActionLink("Thực đơn", "index", "menu")</li>
+                <li>@Html.ActionLink("Tin tức", "index", "news")</li>
+                <li>@Html.ActionLink("Hình ảnh", "index", "photoalbum")</li>
+                <li>@Html.ActionLink("Liên hệ", "contact", "home")</li>
+            </ul>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+</div>
+<div class="container-fluid body-content">
+    @RenderBody()
+    <div class="clearfix"></div>
+    <footer class="my-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                    <strong>&copy; @DateTime.Now.Year - @($"{info?.CompanyName}")</strong>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 pull-right">
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            <a href="@info?.FacebookPageUrl" target="_blank">
+                                <img src="@Url.Content("~/images/facebook-icon.png")" class="footer-icon img-circle" alt="@info?.CompanyName" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@info?.GooglePlusPageUrl" target="_blank">
+                                <img src="@Url.Content("~/images/google-plus-icon.png")" class="footer-icon img-circle" alt="@info?.CompanyName" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@info?.TwitterPageUrl" target="_blank">
+                                <img src="@Url.Content("~/images/twitter-icon.png")" class="footer-icon img-circle" alt="@info?.CompanyName" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
