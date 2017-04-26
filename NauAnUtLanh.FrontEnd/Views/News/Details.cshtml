@@ -1,0 +1,48 @@
+﻿@using NauAnUtLanh.Database
+@model NauAnUtLanh.Database.Article
+@{
+    ViewBag.Title = Model.ArticleTitle;
+    ViewBag.MetaTitle = Model.ArticleTitle;
+    ViewBag.MetaDescription = Model.ShortDescription;
+    ViewBag.MetaKeywords = Model.Keywords;
+    ViewBag.MetaImage = $"~/upload/article/{Model.ArticleAvatar}";
+}
+
+<!--reservation-->
+<div class="reservation">
+    <div class="container">
+        <div class="menu-title reserve-title">
+            <h3>@ViewBag.Title</h3>
+        </div>
+        <p class="rsvp"> @Model.ShortDescription</p>
+        
+        <div class="reservation-form">
+            <div class="col-md-4 reservation-left">
+                <h4>Các tin khác</h4>
+                @{
+                    var db = new NauAnUtLanhDbContext();
+                    var otherNews = db.Articles.OrderByDescending(x => x.CreatedTime).Where(x => x.Activated).Take(6).ToList();
+                    foreach (var article in otherNews)
+                    {
+                        <div class="reservation-grids">
+                            <div class="rsvn-grids-left">
+                                <img src="@Url.Content($"~/upload/article/{article.ArticleAvatar}")" alt="@article.ArticleTitle" title="@article.ArticleTitle"/>
+                            </div>
+                            <div class="rsvn-grids-right">
+                                <h5><a href="@Url.Action("details", "news", new { id = article.Id})">@article.ArticleTitle </a></h5>
+                                <p> @article.ShortDescription </p>
+                            </div>	
+                            <div class="clearfix"> </div>			
+                        </div>
+                    }
+
+                }
+            </div>
+            <div class="col-md-8 reservation-right">
+                @Html.Raw(WebUtility.HtmlDecode(Model.ArticleContent))
+            </div>
+            <div class="clearfix"> </div>		
+        </div>
+    </div>	
+</div>	
+<!--//reservation-->

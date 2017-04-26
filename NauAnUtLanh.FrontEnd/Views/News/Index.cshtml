@@ -1,0 +1,41 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<NauAnUtLanh.Database.Article>
+@{
+    ViewBag.Title = "Tin tức";
+}
+
+<div class="news">
+    <div class="container">
+        <div class="menu-title">
+            <h3>@ViewBag.Title</h3>
+        </div>
+        
+        <div class="news-info">
+            @{
+                foreach (var article in Model)
+                {
+                    <div class="col-md-6 news-grids">
+                        <div class="news-grids-left">
+                            <a href="@Url.Action("details", "news", new {id = article.Id})">
+                                <img src="@Url.Content($"~/upload/article/{article.ArticleAvatar}")" alt="@article.ArticleTitle" title="@article.ArticleTitle" />
+                            </a>
+                            
+                        </div>
+                        <div class="news-grids-right">
+                            <h5>@($"{article.CreatedTime:dd/MM/yyyy hh:mm tt}")</h5>
+                            <h4>
+                                <a href="@Url.Action("details", "news", new {id = article.Id})">
+                                    @article.ArticleTitle
+                                </a>
+                            </h4>
+                            <p>@article.ShortDescription</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                }
+            }
+        </div>
+        @Html.PagedListPager(Model, page => Url.Action("index", new { page }))
+    </div>
+</div>
+

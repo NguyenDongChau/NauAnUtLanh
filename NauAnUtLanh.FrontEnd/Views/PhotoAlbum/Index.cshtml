@@ -12,40 +12,36 @@
     ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
 }
 
-<div class="container">
-    <h2 class="text-primary">@ViewBag.Title</h2>
-    <hr/>
-    <div class="row">
-
+<div class="contact">
+    <div class="container">
+        <div class="menu-title">
+            <h3>Hình ảnh</h3>
+        </div>
+        <div class="clearfix"></div>
         @{
-            foreach (var item in Model.ToList())
+            foreach (var album in Model)
             {
-                var folder = Url.Content($"~/upload/album/{item.Id}");
-                if (Directory.Exists(Server.MapPath(folder)))
-                {
-                    var files = Directory.GetFiles(Server.MapPath(folder)).ToList();
-                    if (files.Any())
-                    {
-                        var file = files.FirstOrDefault();
-                        var firstImg = new FileInfo(file).Name;
-                        if (!string.IsNullOrEmpty(firstImg))
+                <div class="contact-grids">
+                    <div class="title cnt-inpt">
+                        <h3>@album.AlbumName</h3>
+                    </div>
+                    @{
+                        var path = $"~/upload/album/{album.Id}";
+                        var folder = Server.MapPath($"{path}");
+                        var files = Directory.GetFiles(folder).ToList();
+                        foreach (var img in files)
                         {
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                <a href="@Url.Action("details", "photoalbum", new {id = item.Id})" class="thumbnail">
-                                    <img src="@Url.Content($"{folder}/{firstImg}")" alt="@item.AlbumName" class="img-responsive my-thumbnail">
-                                    <h4 class="text-primary">@item.AlbumName</h4>
-                                </a>
-                            </div>
+                            var imgName = new FileInfo(img).Name;
+                            <a href="@Url.Content($"{path}/{imgName}")" data-lightbox="roadtrip">
+                                <img class="my-thumbnail" src="@Url.Content($"{path}/{imgName}")" alt="@imgName">
+                            </a>
                         }
                     }
-
-                }
+                </div>
             }
         }
-        <div class="clearfix"></div>
-        <span style="margin: auto; width: 100%; text-align: center;">@Html.PagedListPager(Model, page => Url.Action("Index", new {page}))</span>
+        
+        @Html.PagedListPager(Model, page => Url.Action("index", new { page }))
     </div>
 </div>
-
-
 

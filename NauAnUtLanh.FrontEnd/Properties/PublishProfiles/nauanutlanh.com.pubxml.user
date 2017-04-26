@@ -64,7 +64,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:46:26</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.FrontEnd.dll">
-      <publishTime>04/26/2017 14:22:31</publishTime>
+      <publishTime>04/26/2017 19:29:34</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/02/2017 17:46:32</publishTime>
@@ -274,7 +274,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 17:12:13</publishTime>
     </File>
     <File Include="Content/pabulum/style.css">
-      <publishTime>04/26/2017 12:54:24</publishTime>
+      <publishTime>04/26/2017 18:33:58</publishTime>
     </File>
     <File Include="Content/pabulum/swipebox.css">
       <publishTime>04/26/2017 09:48:56</publishTime>
@@ -444,6 +444,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/cal2.png">
       <publishTime>04/26/2017 10:41:15</publishTime>
     </File>
+    <File Include="images/close.png">
+      <publishTime>04/26/2017 18:20:01</publishTime>
+    </File>
     <File Include="images/facebook-icon.png">
       <publishTime>04/24/2017 14:28:13</publishTime>
     </File>
@@ -468,6 +471,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/icons-sprite.png">
       <publishTime>04/26/2017 10:41:15</publishTime>
     </File>
+    <File Include="images/loading.gif">
+      <publishTime>04/26/2017 18:20:01</publishTime>
+    </File>
     <File Include="images/menu-icon.png">
       <publishTime>04/26/2017 10:41:15</publishTime>
     </File>
@@ -476,6 +482,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="images/move-up.png">
       <publishTime>04/26/2017 10:41:15</publishTime>
+    </File>
+    <File Include="images/next.png">
+      <publishTime>04/26/2017 18:20:01</publishTime>
+    </File>
+    <File Include="images/prev.png">
+      <publishTime>04/26/2017 18:20:01</publishTime>
     </File>
     <File Include="images/twitter-icon.png">
       <publishTime>04/24/2017 14:28:13</publishTime>
@@ -597,11 +609,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Menu/Index.cshtml">
       <publishTime>04/26/2017 13:53:23</publishTime>
     </File>
+    <File Include="Views/News/Details.cshtml">
+      <publishTime>04/26/2017 19:28:58</publishTime>
+    </File>
+    <File Include="Views/News/Index.cshtml">
+      <publishTime>04/26/2017 19:14:10</publishTime>
+    </File>
     <File Include="Views/PhotoAlbum/Details.cshtml">
       <publishTime>04/24/2017 17:11:41</publishTime>
     </File>
     <File Include="Views/PhotoAlbum/Index.cshtml">
-      <publishTime>04/24/2017 17:08:13</publishTime>
+      <publishTime>04/26/2017 18:35:59</publishTime>
     </File>
     <File Include="Views/PhotoAlbum/_PhotoGallery.cshtml">
       <publishTime>04/24/2017 10:33:02</publishTime>
