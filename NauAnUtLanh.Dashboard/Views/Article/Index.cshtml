@@ -75,7 +75,7 @@
 
 @($"Tổng số: {ViewData["total"]:0,0}")
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new {page}))
+@Html.PagedListPager(Model, page => Url.Action("index", new {page}))
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")

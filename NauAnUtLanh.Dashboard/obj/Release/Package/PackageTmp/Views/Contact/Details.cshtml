@@ -1,0 +1,34 @@
+﻿@model NauAnUtLanh.Database.Contact
+
+@{
+    ViewBag.Title = Model.Subject;
+}
+
+
+<hr/>
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>@ViewBag.Title</h2></div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <strong>@Model.FullName</strong> &lt;@Model.Email&gt;
+        </div>
+        <div class="text-justify">
+            @Model.Content
+        </div>
+    </div>
+    <div class="panel-footer">@($"{Model.CreatedTime:dd/MM/yyyy HH:mm:ss}")</div>
+</div>
+
+
+<div class="col-md-12">
+    <div class="text-left">
+        <strong>@Model.FullName <span class="text-muted">&nbsp;&lt;@Model.Email&gt;</span></strong>
+    </div>
+</div>
+
+<div class="col-md-12">
+    @Model.Content
+</div>
+
+@Html.ActionLink("Trở về", "index")

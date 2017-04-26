@@ -162,6 +162,7 @@
     <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DefaultInfoController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\FoodMenuController.cs" />
@@ -257,6 +258,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <Content Include="images\mail-icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
@@ -778,6 +780,8 @@
     <Content Include="Views\FoodMenu\Details.cshtml" />
     <Content Include="Views\Food\_FoodList.cshtml" />
     <Content Include="Views\FoodMenu\Edit.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

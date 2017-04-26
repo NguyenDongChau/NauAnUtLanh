@@ -1,6 +1,5 @@
 ﻿@using NauAnUtLanh.Database
 @model NauAnUtLanh.FrontEnd.Models.ContactViewModel
-
 @{
     ViewBag.Title = "Liên hệ";
     var db = new NauAnUtLanhDbContext();
@@ -10,72 +9,74 @@
     ViewBag.MetaKeywords = info?.MetaKeywords;
     ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
 }
-
-<iframe src="@info?.GoogleMapUrl" class="embed-responsive-item full-screen-map" allowfullscreen></iframe>
-
-<div class="container body-content">
-    <div class="col-md-3">
-        <h3>Địa chỉ</h3>
-        <hr />
-        <h5 class="text-uppercase text-primary"><strong>@info.CompanyName</strong></h5>
-        <p><strong>Địa chỉ:</strong> <span class="text-info">@info.CompanyAddress</span></p>
-        <p><strong>Hotline:</strong> <span class="text-info">@info.Hotline</span></p>
-        <p>
-            <strong>Email:</strong> <a href="@($"mailto:{info.CompanyEmail}")" class="text-info">@info.CompanyEmail</a>
-        </p>
-        <p>
-            <strong>Skype:</strong>
-            <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
-            <div id="@($"SkypeButton_Call_{info.OnlineSupport}_1")">
-                <script type="text/javascript">
-                    Skype.ui({
-                        "name": "chat",
-                        "element": "@($"SkypeButton_Call_{info.OnlineSupport}_1")",
-                        "participants": ["@info.OnlineSupport"],
-                        "imageSize": 24
-                    });
-                </script>
-            </div>
-        </p>
-    </div>
-    <div class="col-md-9">
-        <h3>Liên hệ</h3>
-        <hr />
-        @using (@Html.BeginForm("contact", "home", FormMethod.Post, new { @class = "form-horizontal" }))
+<div class="contact">
+    <div class="container">
+        <div class="menu-title">
+            <h3>Liên hệ</h3>
+        </div>
+        @using (Html.BeginForm("contact", "home", FormMethod.Post, new { @class = "contact-form" }))
         {
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <div class="col-md-4">
-                    @Html.TextBoxFor(m => m.FullName, new {@class = "form-control", @placeholder = "Họ tên"})
-                </div>
-                <div class="col-md-4">
-                    @Html.TextBoxFor(m => m.Email, new {@class = "form-control", @placeholder = "Email"})
-                </div>
-                <div class="col-md-4">
-                    @Html.TextBoxFor(m => m.PhoneNumber, new {@class = "form-control", @placeholder = "Số điện thoại", @id = "PhoneNumber"})
-                </div>
+            
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 cnt-inpt">
+                @Html.ValidationSummary(true)
             </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    @Html.TextBoxFor(m=>m.Subject, new { @class = "form-control", @placeholder = "Tiêu đề" })
-                </div>
+            
+            <div class="col-md-12 cnt-inpt">
+                @Html.TextBoxFor(m => m.FullName, "", new { placeholder = "Họ và tên" })
+                @Html.ValidationMessageFor(m=>m.FullName, "", new { @class = "text-danger"})
             </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @placeholder = "Nội dung", @rows = "5", @id = "htmleditor" })
-                </div>
+
+            <div class="col-md-6 cnt-inpt">
+                @Html.TextBoxFor(m => m.Email, "", new { placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    <input type="submit" value="Gửi liên hệ" class="btn btn-primary" />
-                </div>
+
+            <div class="col-md-6 cnt-inpt">
+                @Html.TextBoxFor(m => m.PhoneNumber, "", new { placeholder = "Số điện thoại" })
             </div>
-            <div class="text-success bg-info">@ViewData["message"]</div>
+
+            <div class="col-md-12 cnt-inpt">
+                @Html.TextBoxFor(m => m.Subject, "", new { placeholder = "Tiêu đề" })
+                @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-12 cnt-inpt">
+                @Html.TextAreaFor(m => m.Content, new { placeholder = "Nội dung", rows = "5" })
+                @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-12 cnt-inpt">
+                <button type="submit" class="btn1 btn-1 btn-1e">Gửi liên hệ</button>
+            </div>
         }
+
+        <div class="contact-grids">
+            <div class="col-md-8 map">
+                <div class="title cnt-title">
+                    <h3>Bản đồ</h3>
+                </div>
+                <iframe src="@info?.GoogleMapUrl" frameborder="0" style="border:0"></iframe>
+            </div>
+            <div class="col-md-4 map address">
+                <div class="title cnt-title">
+                    <h3>Địa chỉ</h3>
+                </div>
+                <ul>
+                    <li>@($"{info?.CompanyName}")</li>
+                    <li>@($"{info?.CompanyAddress}")</li>
+                    <li>@($"Điện thoại: {info?.CompanyPhone}")</li>
+                    <li>@($"Hotline: {info?.Hotline}")</li>
+                    <li>Email: <a href="mailto:@($"{info?.CompanyEmail}")">@($"{info?.CompanyEmail}")</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
     </div>
 </div>
-
+<!--//contact-->
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")

@@ -1,0 +1,37 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<NauAnUtLanh.Database.Contact>
+@{
+    ViewBag.Title = "Danh sách mail liên hệ";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<div class="col-md-12">
+    @foreach (var mail in Model)
+    {
+        if (!mail.Read)
+        {
+            <a href="@Url.Action("details", new {id = mail.Id})">
+                <div class="text-primary">
+                    <div class="col-md-2">@mail.FullName</div>
+                    <div class="col-md-8">@mail.Subject</div>
+                    <div class="col-md-2">@($"{mail.CreatedTime:dd/MM/yyyy HH:mm:ss}")</div>
+                </div>
+            </a>
+            <hr/>
+        }
+        else
+        {
+            <a href="@Url.Action("details", new {id = mail.Id})">
+                <div class="text-muted">
+                    <div class="col-md-2">@mail.FullName</div>
+                    <div class="col-md-8">@mail.Subject</div>
+                    <div class="col-md-2">@($"{mail.CreatedTime:dd/MM/yyyy HH:mm:ss}")</div>
+                </div>
+            </a>
+            <hr/>
+        }
+    }
+</div>
+
+@Html.PagedListPager(Model, page => Url.Action("index", new { page }))

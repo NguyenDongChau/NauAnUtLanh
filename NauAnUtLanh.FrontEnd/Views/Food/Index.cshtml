@@ -1,0 +1,14 @@
+﻿@using NauAnUtLanh.Database
+
+@{
+    ViewBag.Title = "Index";
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+    ViewBag.MetaTitle = info?.CompanyName;
+    ViewBag.MetaDescription = info?.MetaDescription;
+    ViewBag.MetaKeywords = info?.MetaKeywords;
+    ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
+}
+
+<h2>Index</h2>
+
