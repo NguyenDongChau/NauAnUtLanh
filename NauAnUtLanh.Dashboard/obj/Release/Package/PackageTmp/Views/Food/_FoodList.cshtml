@@ -11,7 +11,6 @@
                 <a href="#" onclick="return addFood('@food.Id')">
                     @($"{category?.CategoryName} / {food.FoodType} / {food.FoodName}")
                 </a>
-                
             </li>
         </ul>
     }
@@ -19,7 +18,4 @@
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
-    @*<script>
-        
-    </script>*@
 }

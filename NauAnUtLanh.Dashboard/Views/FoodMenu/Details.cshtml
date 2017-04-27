@@ -3,7 +3,11 @@
 
 @{
     ViewBag.Title = "Danh sách thực đơn";
-    var foodIdList = Model.FoodIdList.Split(';').ToList();
+    var foodIdList = new List<string>();
+    if (!string.IsNullOrEmpty(Model.FoodIdList))
+    {
+        foodIdList = Model.FoodIdList.Split(';').ToList();
+    }
     var db = new NauAnUtLanhDbContext();
 }
 
@@ -18,21 +22,25 @@
             <img src="@Url.Content($"~/upload/foodmenu/{Model.Avatar}")" class="img-responsive" alt="@Model.MenuName"/>
         </div>
         <div class="col-md-8">
-
             <br/>
-            @foreach (var id in foodIdList)
-            {
-                var foodId = Guid.Parse(id);
-                var food = db.Foods.Find(foodId);
-                if (food != null)
+            @{
+                if (foodIdList.Any())
                 {
-                    <p class="text-muted">
-                        <i>@food.FoodType</i>
-                    </p>
-                    <p class="text-uppercase">
-                        <strong>@food.FoodName</strong>
-                    </p>
-                    <br/>
+                    foreach (var id in foodIdList)
+                    {
+                        var foodId = Guid.Parse(id);
+                        var food = db.Foods.Find(foodId);
+                        if (food != null)
+                        {
+                            <p class="text-muted">
+                                <i>@food.FoodType</i>
+                            </p>
+                            <p class="text-uppercase">
+                                <strong>@food.FoodName</strong>
+                            </p>
+                            <br/>
+                        }
+                    }
                 }
             }
         </div>

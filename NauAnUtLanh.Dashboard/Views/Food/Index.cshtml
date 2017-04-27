@@ -78,12 +78,11 @@
                 }
             </td>
             <td>
-
                 @{
                     if (food.Activated)
                     {
                         <a href="#" onclick="return changeStatus('@food.Id')">
-                            <img src="@Url.Content("~/images/activated-icon.png")" class="menu-icon" alt="Đang hiển thị" title="Đang hiển thị" />
+                            <img src="@Url.Content("~/images/activated-icon.png")" class="menu-icon" alt="Đang hiển thị" title="Đang hiển thị"/>
                         </a>
 
                     }
@@ -91,6 +90,19 @@
                     {
                         <a href="#" onclick="return changeStatus('@food.Id')">
                             <img src="@Url.Content("~/images/inactive-icon.png")" class="menu-icon" alt="Tạm ẩn" title="Tạm ẩn" />
+                        </a>
+                    }
+                    if (food.Feature)
+                    {
+                        <a href="#" onclick="return changeFeature('@food.Id')">
+                            <img src="@Url.Content("~/images/show-home-icon.png")" class="menu-icon" alt="Hiển thị trên trang chủ" title="Hiển thị trên trang chủ" />
+                        </a>
+
+                    }
+                    else
+                    {
+                        <a href="#" onclick="return changeStatus('@food.Id')">
+                            <img src="@Url.Content("~/images/not-show-home-icon.png")" class="menu-icon" alt="Không hiển thị trên trang chủ" title="Không hiển thị trên trang chủ" />
                         </a>
                     }
                 }
@@ -109,6 +121,20 @@
         function changeStatus(id) {
             $.ajax({
                 url: '@Url.Action("changestatus")',
+                data: { id: id },
+                error: function () {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function () {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        }
+        function changeFeature(id) {
+            $.ajax({
+                url: '@Url.Action("changefeature")',
                 data: { id: id },
                 error: function () {
                     alert('Can not retrieve data');

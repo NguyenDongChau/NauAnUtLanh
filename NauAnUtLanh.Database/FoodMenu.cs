@@ -13,6 +13,7 @@ namespace NauAnUtLanh.Database
         public long Price { get; set; }
         public string FoodIdList { get; set; }
         public bool Activated { get; set; }
+        public bool Feature { get; set; }
         public DateTime CreateTime { get; set; }
     }
 }

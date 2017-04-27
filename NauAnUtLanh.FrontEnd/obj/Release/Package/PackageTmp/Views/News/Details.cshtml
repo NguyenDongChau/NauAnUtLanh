@@ -1,5 +1,5 @@
 ﻿@using NauAnUtLanh.Database
-@model NauAnUtLanh.Database.Article
+@model Article
 @{
     ViewBag.Title = Model.ArticleTitle;
     ViewBag.MetaTitle = Model.ArticleTitle;
@@ -12,6 +12,7 @@
 <div class="reservation">
     <div class="container">
         <div class="menu-title reserve-title">
+            <h3>Bản tin chi tiết</h3>
             <h3>@ViewBag.Title</h3>
         </div>
         <p class="rsvp"> @Model.ShortDescription</p>
@@ -21,7 +22,7 @@
                 <h4>Các tin khác</h4>
                 @{
                     var db = new NauAnUtLanhDbContext();
-                    var otherNews = db.Articles.OrderByDescending(x => x.CreatedTime).Where(x => x.Activated).Take(6).ToList();
+                    var otherNews = db.Articles.OrderByDescending(x => x.CreatedTime).Where(x => x.Activated & x.Id != Model.Id).Take(6).ToList();
                     foreach (var article in otherNews)
                     {
                         <div class="reservation-grids">

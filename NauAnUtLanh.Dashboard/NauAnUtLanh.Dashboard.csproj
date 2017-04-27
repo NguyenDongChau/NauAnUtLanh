@@ -259,6 +259,8 @@
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <Content Include="images\mail-icon.png" />
+    <Content Include="images\not-show-home-icon.png" />
+    <Content Include="images\show-home-icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />

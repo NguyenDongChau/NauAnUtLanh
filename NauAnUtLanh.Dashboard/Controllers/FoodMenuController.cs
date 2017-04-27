@@ -58,7 +58,7 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 return View(model);
             }
             var foodIdList = (List<string>) Session["FoodIdList"];
-            if (foodIdList == null || foodIdList.Count <= 0)
+            if (foodIdList == null || !foodIdList.Any())
             {
                 ModelState.AddModelError("", "Chưa thêm món ăn vào thực đơn");
                 return View(model);
@@ -118,7 +118,7 @@ namespace NauAnUtLanh.Dashboard.Controllers
             var menu = await _db.FoodMenus.FindAsync(model.Id);
             if (menu == null) return HttpNotFound();
             var foodIdList = (List<string>) Session["FoodIdList"];
-            if (foodIdList == null || foodIdList.Count <= 0)
+            if (foodIdList == null || !foodIdList.Any())
             {
                 ModelState.AddModelError("", "Chưa thêm món ăn vào thực đơn");
                 return View(model);
@@ -160,6 +160,18 @@ namespace NauAnUtLanh.Dashboard.Controllers
         }
 
         [HttpPost]
+        public async Task<bool> ChangeFeature(Guid? id)
+        {
+            if (id == null) return false;
+            var menu = await _db.FoodMenus.FindAsync(id);
+            if (menu == null) return false;
+            menu.Feature = !menu.Feature;
+            _db.Entry(menu).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
+            return true;
+        }
+
+        [HttpPost]
         public void AddFood(string id)
         {
             var foodIdList = (List<string>)Session["FoodIdList"];
@@ -179,6 +191,15 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 }
             }
             Session["FoodIdList"] = foodIdList;
+        }
+
+        [HttpPost]
+        public async Task Delete(Guid id)
+        {
+            var menu = await _db.FoodMenus.FindAsync(id);
+            if (menu == null) return;
+            _db.Entry(menu).State = EntityState.Deleted;
+            await _db.SaveChangesAsync();
         }
 
         protected override void Dispose(bool disposing)

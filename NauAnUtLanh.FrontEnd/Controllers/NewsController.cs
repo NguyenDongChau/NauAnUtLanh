@@ -12,7 +12,7 @@ namespace NauAnUtLanh.FrontEnd.Controllers
     public class NewsController : Controller
     {
         private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
-        private const int PageSize = 30;
+        private const int PageSize = 20;
 
         public async Task<ActionResult> Index(int? page)
         {

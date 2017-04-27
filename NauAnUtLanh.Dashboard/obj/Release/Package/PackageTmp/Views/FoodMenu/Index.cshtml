@@ -50,11 +50,25 @@
                             <img src="@Url.Content("~/images/inactive-icon.png")" class="menu-icon" alt="Tạm ẩn" title="Tạm ẩn"/>
                         </a>
                     }
+                    if (menu.Feature)
+                    {
+                        <a href="#" onclick="return changeFeature('@menu.Id')">
+                            <img src="@Url.Content("~/images/show-home-icon.png")" class="menu-icon" alt="Hiển thị trên trang chủ" title="Hiển thị trên trang chủ" />
+                        </a>
+
+                    }
+                    else
+                    {
+                        <a href="#" onclick="return changeFeature('@menu.Id')">
+                            <img src="@Url.Content("~/images/inactive-icon.png")" class="menu-icon" alt="Không hiển thị trên trang chủ" title="Không hiển thị trên trang chủ" />
+                        </a>
+                    }
                 }
             </td>
             <td>
                 @Html.ActionLink("Chi tiết", "details", new {id = menu.Id} ) |
-                @Html.ActionLink("Thay đổi", "edit", new { id = menu.Id })
+                @Html.ActionLink("Thay đổi", "edit", new { id = menu.Id }) |
+                <a href="#" onclick="deleteMenu('@menu.Id')">Xóa</a>
             </td>
         </tr>
     }
@@ -78,6 +92,45 @@
                     location.reload();
                 },
                 type: 'POST'
+            });
+        }
+        function changeFeature(id) {
+            $.ajax({
+                url: '@Url.Action("changefeature")',
+                data: { id: id },
+                error: function () {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function () {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        }
+        function deleteMenu(id) {
+            $.confirm({
+                title: 'Cảnh báo!!!',
+                content: 'Bạn chắc chắn muốn xóa?',
+                buttons: {
+                    confirm: function () {
+                        $.ajax({
+                            url: '@Url.Action("Delete")',
+                            data: { id },
+                            error: function () {
+                                alert('Can not retrieve data');
+                            },
+                            dataType: 'text',
+                            success: function () {
+                                location.reload();
+                            },
+                            type: 'POST'
+                        });
+                    },
+                    cancel: function () {
+                        return;
+                    }
+                }
             });
         }
     </script>

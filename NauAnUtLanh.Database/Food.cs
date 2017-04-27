@@ -12,6 +12,7 @@ namespace NauAnUtLanh.Database
         public string FoodName { get; set; }
         public string FoodType { get; set; }
         public bool Activated { get; set; }
+        public bool Feature { get; set; }
         public string Avatar { get; set; }
         public DateTime CreatedTime { get; set; }
     }

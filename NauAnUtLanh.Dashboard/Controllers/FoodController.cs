@@ -136,6 +136,18 @@ namespace NauAnUtLanh.Dashboard.Controllers
             return true;
         }
 
+        [HttpPost]
+        public async Task<bool> ChangeFeature(Guid? id)
+        {
+            if (id == null) return false;
+            var food = await _db.Foods.FindAsync(id);
+            if (food == null) return false;
+            food.Feature = !food.Feature;
+            _db.Entry(food).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<JsonResult> GetFoodsByCategory(int id)
         {
             var foods = await _db.Foods.Where(x => x.Activated && x.CategoryId == id).ToListAsync();

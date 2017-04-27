@@ -64,7 +64,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:46:26</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.FrontEnd.dll">
-      <publishTime>04/26/2017 19:29:34</publishTime>
+      <publishTime>04/27/2017 12:41:53</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/02/2017 17:46:32</publishTime>
@@ -274,7 +274,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 17:12:13</publishTime>
     </File>
     <File Include="Content/pabulum/style.css">
-      <publishTime>04/26/2017 18:33:58</publishTime>
+      <publishTime>04/27/2017 10:23:45</publishTime>
     </File>
     <File Include="Content/pabulum/swipebox.css">
       <publishTime>04/26/2017 09:48:56</publishTime>
@@ -432,6 +432,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="fonts/glyphicons-halflings-regular.woff2">
       <publishTime>04/24/2017 10:05:22</publishTime>
     </File>
+    <File Include="fonts/WCManoNegraBoldBta.otf">
+      <publishTime>04/27/2017 10:21:14</publishTime>
+    </File>
+    <File Include="fonts/WCManoNegraBoldBta.ttf">
+      <publishTime>04/27/2017 10:21:14</publishTime>
+    </File>
+    <File Include="fonts/WCManoNegraBta.otf">
+      <publishTime>04/27/2017 10:21:14</publishTime>
+    </File>
+    <File Include="fonts/WCManoNegraBta.ttf">
+      <publishTime>04/27/2017 10:21:14</publishTime>
+    </File>
+    <File Include="fonts/WC_MANO_NEGRA_BTA.pdf">
+      <publishTime>04/27/2017 10:21:13</publishTime>
+    </File>
     <File Include="Global.asax">
       <publishTime>04/08/2017 11:47:34</publishTime>
     </File>
@@ -449,6 +464,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="images/facebook-icon.png">
       <publishTime>04/24/2017 14:28:13</publishTime>
+    </File>
+    <File Include="images/food-disk-icon.png">
+      <publishTime>04/27/2017 12:40:26</publishTime>
     </File>
     <File Include="images/google-plus-icon.png">
       <publishTime>04/24/2017 14:28:13</publishTime>
@@ -594,8 +612,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/_references.js">
       <publishTime>04/26/2017 09:49:41</publishTime>
     </File>
+    <File Include="Views/Category/_CategoryList.cshtml">
+      <publishTime>04/27/2017 12:44:14</publishTime>
+    </File>
     <File Include="Views/Food/Index.cshtml">
-      <publishTime>04/26/2017 14:14:32</publishTime>
+      <publishTime>04/27/2017 12:45:23</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>04/08/2017 11:47:34</publishTime>
@@ -607,13 +628,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 11:49:59</publishTime>
     </File>
     <File Include="Views/Menu/Index.cshtml">
-      <publishTime>04/26/2017 13:53:23</publishTime>
+      <publishTime>04/27/2017 12:46:27</publishTime>
     </File>
     <File Include="Views/News/Details.cshtml">
-      <publishTime>04/26/2017 19:28:58</publishTime>
+      <publishTime>04/27/2017 09:26:57</publishTime>
     </File>
     <File Include="Views/News/Index.cshtml">
-      <publishTime>04/26/2017 19:14:10</publishTime>
+      <publishTime>04/27/2017 10:39:55</publishTime>
     </File>
     <File Include="Views/PhotoAlbum/Details.cshtml">
       <publishTime>04/24/2017 17:11:41</publishTime>
@@ -631,7 +652,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 11:44:50</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/26/2017 14:12:11</publishTime>
+      <publishTime>04/27/2017 13:38:03</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>04/08/2017 11:47:34</publishTime>

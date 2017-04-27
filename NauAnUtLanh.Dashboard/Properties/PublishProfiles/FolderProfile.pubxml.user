@@ -53,10 +53,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:44:38</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Dashboard.dll">
-      <publishTime>04/26/2017 14:51:45</publishTime>
+      <publishTime>04/27/2017 19:17:15</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.dll">
-      <publishTime>04/24/2017 11:50:49</publishTime>
+      <publishTime>04/27/2017 19:17:13</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.dll.config">
       <publishTime>04/08/2017 11:46:26</publishTime>
@@ -712,6 +712,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/next.png">
       <publishTime>04/13/2017 12:12:30</publishTime>
     </File>
+    <File Include="images/not-show-home-icon.png">
+      <publishTime>04/27/2017 19:12:41</publishTime>
+    </File>
     <File Include="images/photo-album-icon.png">
       <publishTime>04/10/2017 13:50:27</publishTime>
     </File>
@@ -723,6 +726,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="images/profile-icon.png">
       <publishTime>04/09/2017 11:05:10</publishTime>
+    </File>
+    <File Include="images/show-home-icon.png">
+      <publishTime>04/27/2017 19:12:41</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>04/24/2017 10:07:13</publishTime>
@@ -1916,22 +1922,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/17/2017 13:44:42</publishTime>
     </File>
     <File Include="Views/Food/Index.cshtml">
-      <publishTime>04/17/2017 13:52:14</publishTime>
+      <publishTime>04/27/2017 19:14:15</publishTime>
     </File>
     <File Include="Views/Food/_FoodList.cshtml">
-      <publishTime>04/20/2017 18:49:13</publishTime>
+      <publishTime>04/27/2017 11:38:17</publishTime>
     </File>
     <File Include="Views/FoodMenu/Create.cshtml">
       <publishTime>04/20/2017 18:42:47</publishTime>
     </File>
     <File Include="Views/FoodMenu/Details.cshtml">
-      <publishTime>04/20/2017 13:04:10</publishTime>
+      <publishTime>04/27/2017 11:34:21</publishTime>
     </File>
     <File Include="Views/FoodMenu/Edit.cshtml">
-      <publishTime>04/20/2017 18:49:42</publishTime>
+      <publishTime>04/27/2017 11:55:14</publishTime>
     </File>
     <File Include="Views/FoodMenu/Index.cshtml">
-      <publishTime>04/20/2017 13:03:59</publishTime>
+      <publishTime>04/27/2017 19:17:04</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>04/10/2017 11:57:44</publishTime>
@@ -1982,7 +1988,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:44:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/26/2017 18:29:30</publishTime>
+      <publishTime>04/27/2017 11:40:20</publishTime>
     </File>
   </ItemGroup>
 </Project>

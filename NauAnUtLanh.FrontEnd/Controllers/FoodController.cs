@@ -13,20 +13,15 @@ namespace NauAnUtLanh.FrontEnd.Controllers
         private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
         private const int PageSize = 30;
 
-        public async Task<ActionResult> Index(int? page)
+        public async Task<ActionResult> Index(int? page, int? type)
         {
             var pageNumber = page ?? 1;
+            var catId = type ?? 0;
             var foods = await _db.Foods.OrderByDescending(x => x.CreatedTime).Where(x => x.Activated).ToListAsync();
-            return View(foods.ToPagedList(pageNumber, PageSize));
-        }
-
-        public async Task<ActionResult> Category(int? page, int? id)
-        {
-            var pageNumber = page ?? 1;
-            if(id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var category = await _db.Categories.FindAsync(id);
-            var foods = await _db.Foods.OrderByDescending(x => x.CreatedTime).Where(x => x.Activated & x.CategoryId == id).ToListAsync();
-            ViewData["category"] = category;
+            if (catId != 0)
+            {
+                foods = await _db.Foods.OrderByDescending(x => x.CreatedTime).Where(x => x.Activated & x.CategoryId == catId).ToListAsync();
+            }
             return View(foods.ToPagedList(pageNumber, PageSize));
         }
 
