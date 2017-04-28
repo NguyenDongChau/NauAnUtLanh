@@ -175,7 +175,6 @@ D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\System.Web.WebPages.dll
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\System.Web.WebPages.Razor.dll
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\WebGrease.dll
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\NauAnUtLanh.Database.pdb
-D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\NauAnUtLanh.Database.dll.config
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\Antlr3.Runtime.pdb
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\EntityFramework.xml
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\EntityFramework.SqlServer.xml
@@ -198,3 +197,4 @@ D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\System.Web.WebPages.Raz
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Release\NauAnUtLanh.Dashboard.csprojResolveAssemblyReference.cache
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Release\NauAnUtLanh.Dashboard.dll
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Release\NauAnUtLanh.Dashboard.pdb
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\NauAnUtLanh.Database.dll.config

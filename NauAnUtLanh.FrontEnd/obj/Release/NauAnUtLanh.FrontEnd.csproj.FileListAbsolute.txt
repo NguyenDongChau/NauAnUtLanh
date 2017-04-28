@@ -154,10 +154,10 @@ D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\System.Web.WebPages.xml
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\System.Web.WebPages.Deployment.xml
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\System.Web.WebPages.Razor.xml
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\NauAnUtLanh.Database.pdb
-D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\NauAnUtLanh.Database.dll.config
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\PagedList.xml
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\obj\Release\NauAnUtLanh.FrontEnd.csprojResolveAssemblyReference.cache
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\obj\Release\NauAnUtLanh.FrontEnd.dll
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\obj\Release\NauAnUtLanh.FrontEnd.pdb
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\PagedList.Mvc.dll
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\PagedList.Mvc.xml
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\NauAnUtLanh.Database.dll.config
