@@ -19,6 +19,16 @@ namespace NauAnUtLanh.FrontEnd.Controllers
             return View(menus.ToPagedList(pageNumber, PageSize));
         }
 
+        public async Task<ActionResult> FeatureMenu()
+        {
+            var menus = await _db.FoodMenus
+                .OrderByDescending(x => x.CreateTime)
+                .Where(x => x.Activated & x.Feature)
+                .Take(10)
+                .ToListAsync();
+            return PartialView("_FeatureMenu", menus);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

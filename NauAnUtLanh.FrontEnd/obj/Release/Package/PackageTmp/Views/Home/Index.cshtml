@@ -10,13 +10,20 @@
 }
 
 <div id="banners"></div>
-
-<div ></div>
-
+<br/>
+<br/>
+<div id="feature-food"></div>
+<br/>
+<br/>
+<div id="feature-menu"></div>
+<br/>
+<br/>
+<div id="hot-news"></div>
+<br/>
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $.ajax({
                 type: "GET",
                 url: '@Url.Action("showbanners","banner")',
@@ -24,6 +31,42 @@
                 success: function (partialView) {
                     $("#banners").html(partialView);
                     $("#banners").css("display", "block");
+                },
+                error: function (ex) {
+                    //alert("Cann't show popup: " + ex);
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("featurefood","food")',
+                dataType: "html",
+                success: function (partialView) {
+                    $("#feature-food").html(partialView);
+                    $("#feature-food").css("display", "block");
+                },
+                error: function (ex) {
+                    //alert("Cann't show popup: " + ex);
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("featuremenu","menu")',
+                dataType: "html",
+                success: function (partialView) {
+                    $("#feature-menu").html(partialView);
+                    $("#feature-menu").css("display", "block");
+                },
+                error: function (ex) {
+                    //alert("Cann't show popup: " + ex);
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("hotnews","news")',
+                dataType: "html",
+                success: function (partialView) {
+                    $("#hot-news").html(partialView);
+                    $("#hot-news").css("display", "block");
                 },
                 error: function (ex) {
                     //alert("Cann't show popup: " + ex);

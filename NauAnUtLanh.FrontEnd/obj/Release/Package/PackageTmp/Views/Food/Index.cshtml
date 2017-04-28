@@ -30,12 +30,12 @@
                         </div>
                     }
                 }
+                <div class="clearfix"></div>
+                @Html.PagedListPager(Model, page => Url.Action("index", new { page }))
             </div>
         </div>
     </div>
 </div>
-
-@Html.PagedListPager(Model, page => Url.Action("index", new { page }))
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")

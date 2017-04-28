@@ -55,13 +55,38 @@
                 @($"{item.CreatedTime:dd/MM/yyyy HH:mm:ss}")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Activated)
+                @{
+                    if (item.Activated)
+                    {
+                        <a href="#" onclick="return changeStatus('@item.Id')">
+                            <img src="@Url.Content("~/images/activated-icon.png")" class="menu-icon" alt="Đang hiển thị" title="Đang hiển thị"/>
+                        </a>
+
+                    }
+                    else
+                    {
+                        <a href="#" onclick="return changeStatus('@item.Id')">
+                            <img src="@Url.Content("~/images/inactive-icon.png")" class="menu-icon" alt="Tạm ẩn" title="Tạm ẩn" />
+                        </a>
+                    }
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Hot)
-            </td>
-            <td>
-                
+                @{
+                    if (item.Hot)
+                    {
+                        <a href="#" onclick="return changeHot('@item.Id')">
+                            <img src="@Url.Content("~/images/show-home-icon.png")" class="menu-icon" alt="Hiển thị trên trang chủ" title="Hiển thị trên trang chủ" />
+                        </a>
+
+                    }
+                    else
+                    {
+                        <a href="#" onclick="return changeHot('@item.Id')">
+                            <img src="@Url.Content("~/images/not-show-home-icon.png")" class="menu-icon" alt="Không hiển thị trên trang chủ" title="Không hiển thị trên trang chủ" />
+                        </a>
+                    }
+                }
             </td>
             <td>
                 @Html.ActionLink("Chi tiết", "details", new { id = item.Id }) |
@@ -79,4 +104,34 @@
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function changeStatus(id) {
+            $.ajax({
+                url: '@Url.Action("changestatus")',
+                data: { id: id },
+                error: function () {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function () {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        }
+        function changeHot(id) {
+            $.ajax({
+                url: '@Url.Action("changehot")',
+                data: { id: id },
+                error: function () {
+                    alert('Can not retrieve data');
+                },
+                dataType: 'text',
+                success: function () {
+                    location.reload();
+                },
+                type: 'POST'
+            });
+        }
+    </script>
 }

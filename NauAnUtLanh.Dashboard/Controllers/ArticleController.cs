@@ -158,6 +158,28 @@ namespace NauAnUtLanh.Dashboard.Controllers
             return RedirectToAction("index");
         }
 
+        [HttpPost]
+        public async Task ChangeStatus(Guid? id)
+        {
+            if (id == null) return;
+            var article = await _db.Articles.FindAsync(id);
+            if (article == null) return;
+            article.Activated = !article.Activated;
+            _db.Entry(article).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
+        }
+
+        [HttpPost]
+        public async Task ChangeHot(Guid? id)
+        {
+            if (id == null) return;
+            var article = await _db.Articles.FindAsync(id);
+            if (article == null) return;
+            article.Hot = !article.Hot;
+            _db.Entry(article).State = EntityState.Modified;
+            await _db.SaveChangesAsync();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

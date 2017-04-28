@@ -101,6 +101,7 @@ namespace NauAnUtLanh.Dashboard.Controllers
             if (!ModelState.IsValid) return View(model);
             var food = await _db.Foods.FindAsync(model.Id);
             if (food == null) return HttpNotFound();
+            if (!Directory.Exists(Path)) Directory.CreateDirectory(Server.MapPath(Path));
             var avatar = Request.Files["Avatar"];
             if (avatar != null && avatar.ContentLength > 0)
             {

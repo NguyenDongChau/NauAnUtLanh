@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using NauAnUtLanh.Database;
@@ -23,6 +22,16 @@ namespace NauAnUtLanh.FrontEnd.Controllers
                 foods = await _db.Foods.OrderByDescending(x => x.CreatedTime).Where(x => x.Activated & x.CategoryId == catId).ToListAsync();
             }
             return View(foods.ToPagedList(pageNumber, PageSize));
+        }
+
+        public async Task<ActionResult> FeatureFood()
+        {
+            var foods = await _db.Foods
+                .OrderByDescending(x => x.CreatedTime)
+                .Where(x => x.Activated & x.Feature)
+                .Take(6)
+                .ToListAsync();
+            return PartialView("_FeatureFood", foods);
         }
 
         protected override void Dispose(bool disposing)

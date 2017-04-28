@@ -19,8 +19,6 @@
     <meta property="og:description" content="@ViewBag.MetaDescription" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
 </head>
 <body>
     <!--header-->
@@ -79,7 +77,7 @@
             </div>
             <div class="col-md-6 footer-right">
                 <a href="@Url.Action("index", "home")"><img src="@Url.Content($"~/upload/{info?.SiteLogo}")" alt="logo" class="logo" /></a>
-                <p>© 2012 - @DateTime.Now.Year | Thiết kế bởi <a href="http://w3layouts.com/">W3layouts</a> | Phát triển bởi <a href="http://ndc.net.vn">NDC Informatics Co., Ltd</a></p>
+                <p>© 2012 - @DateTime.Now.Year | Bản quyền thuộc về <a href="http://nauanutlanh.com">Nấu Ăn Út Lanh</a>
             </div>
             <div class="clearfix"> </div>
         </div>
@@ -93,7 +91,8 @@
     </script>
     <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
     <!--//smooth-scrolling-of-move-up-->
-    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

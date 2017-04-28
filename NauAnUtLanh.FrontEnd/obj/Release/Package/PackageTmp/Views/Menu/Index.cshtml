@@ -55,9 +55,7 @@
                 <div class="clearfix"></div>
             }
         }
-        <div class="col-md-12">
-            @Html.PagedListPager(Model, page => Url.Action("index", new { page }))
-        </div>
+        @Html.PagedListPager(Model, page => Url.Action("index", new { page }))
     </div>
 </div>
 

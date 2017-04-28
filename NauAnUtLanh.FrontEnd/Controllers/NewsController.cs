@@ -31,6 +31,15 @@ namespace NauAnUtLanh.FrontEnd.Controllers
             return View(article);
         }
 
+        public async Task<ActionResult> HotNews()
+        {
+            var articles = await _db.Articles.OrderByDescending(x => x.CreatedTime)
+                .Where(x => x.Activated & x.Hot)
+                .Take(6)
+                .ToListAsync();
+            return PartialView("_HotNews", articles);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

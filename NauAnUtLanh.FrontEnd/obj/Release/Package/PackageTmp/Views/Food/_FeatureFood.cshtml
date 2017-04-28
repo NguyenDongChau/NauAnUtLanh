@@ -1,0 +1,23 @@
+﻿@model IEnumerable<NauAnUtLanh.Database.Food>
+   
+<div class="container">
+    <div class="title cnt-title">
+        <h3>Món đặc sản</h3>
+    </div>
+    @{
+        foreach (var food in Model)
+        {
+            <div class="col-md-4 menu-grids-info">
+                <img src="@Url.Content($"~/upload/food/{food.Avatar}")" alt="" title="@food.FoodName" class="my-thumbnail" />
+                <h3>@food.FoodName</h3>
+            </div>
+            
+        }
+    }
+    <div class="clearfix"></div>
+    <br/>
+    <div class="text-center">
+        @Html.ActionLink("Xem thêm", "index", "food", new { id = "loadMore" })
+    </div>
+</div> 
+
