@@ -10,12 +10,12 @@ namespace NauAnUtLanh.FrontEnd.Controllers
     public class MenuController : Controller
     {
         private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
-        private const int PageSize = 10;
+        private const int PageSize = 5;
 
         public async Task<ActionResult> Index(int? page)
         {
             var pageNumber = page ?? 1;
-            var menus = await _db.FoodMenus.OrderByDescending(x => x.CreateTime).Where(x => x.Activated).ToListAsync();
+            var menus = await _db.FoodMenus.OrderBy(x => x.MenuName).Where(x => x.Activated).ToListAsync();
             return View(menus.ToPagedList(pageNumber, PageSize));
         }
 

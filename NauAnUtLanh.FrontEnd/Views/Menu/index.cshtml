@@ -16,15 +16,27 @@
         <div class="menu-title">
             <h3>Thực đơn</h3>
         </div>
+        <br />
+        <br/>
         @{
             foreach (var menu in Model)
             {
+                <div class="title cnt-title">
+                    <h3>@menu.MenuName</h3>
+                </div>
                 <div class="row">
-                    <div class="title cnt-title">
-                        <h3>@menu.MenuName</h3>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="@Url.Content($"~/upload/foodmenu/{menu.Avatar}")" class="img-responsive" alt="@menu.MenuName"/>
+                    <div class="col-md-6 ">
+                        @{
+                            if (!string.IsNullOrEmpty(menu.Avatar))
+                            {
+                                <img src="@Url.Content($"~/upload/foodmenu/{menu.Avatar}")" class="img-responsive" alt="@menu.MenuName"/>
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/images/logo-book.png")" class="img-responsive menu-food-logo" alt="" />
+                                <img src="@Url.Content("~/images/default-menu.jpg")" class="img-responsive" alt="" />
+                            }
+                        }
                     </div>
                     <div class="col-md-6">
                         @{
@@ -37,22 +49,22 @@
                                     var food = db.Foods.Find(foodId);
                                     if (food != null)
                                     {
-                                        <p class="text-muted">
+                                        <h4 class="text-muted">
                                             <i>@food.FoodType</i>
-                                        </p>
-                                        <p class="text-uppercase">
+                                        </h4>
+                                        <h3 class="text-uppercase">
                                             <strong>@food.FoodName</strong>
-                                        </p>
+                                        </h3>
                                         <br/>
                                     }
                                 }
                             }
                         }
-                        <h2 class="text-primary"><strong>@($"Giá: {menu.Price:0,0}")</strong></h2>
                     </div>
                 </div>
-                <hr/>
                 <div class="clearfix"></div>
+                <br/>
+                <br/>
             }
         }
         @Html.PagedListPager(Model, page => Url.Action("index", new { page }))

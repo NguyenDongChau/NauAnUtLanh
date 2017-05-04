@@ -15,10 +15,10 @@
 <div id="feature-food"></div>
 <br/>
 <br/>
-<div id="feature-menu"></div>
-<br/>
-<br/>
 <div id="hot-news"></div>
+<br/>
+<br/>
+<div id="photo"></div>
 <br/>
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
@@ -50,11 +50,11 @@
             });
             $.ajax({
                 type: "GET",
-                url: '@Url.Action("featuremenu","menu")',
+                url: '@Url.Action("hotnews","news")',
                 dataType: "html",
                 success: function (partialView) {
-                    $("#feature-menu").html(partialView);
-                    $("#feature-menu").css("display", "block");
+                    $("#hot-news").html(partialView);
+                    $("#hot-news").css("display", "block");
                 },
                 error: function (ex) {
                     //alert("Cann't show popup: " + ex);
@@ -62,11 +62,11 @@
             });
             $.ajax({
                 type: "GET",
-                url: '@Url.Action("hotnews","news")',
+                url: '@Url.Action("newest","photoalbum")',
                 dataType: "html",
                 success: function (partialView) {
-                    $("#hot-news").html(partialView);
-                    $("#hot-news").css("display", "block");
+                    $("#photo").html(partialView);
+                    $("#photo").css("display", "block");
                 },
                 error: function (ex) {
                     //alert("Cann't show popup: " + ex);

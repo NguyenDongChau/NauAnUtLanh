@@ -33,7 +33,7 @@
                         {
                             var imgName = new FileInfo(img).Name;
                             <a href="@Url.Content($"{path}/{imgName}")" data-lightbox="roadtrip">
-                                <img class="my-thumbnail" src="@Url.Content($"{path}/{imgName}")" alt="@imgName">
+                                <img class="my-small-thumbnail" src="@Url.Content($"{path}/{imgName}")" alt="@imgName">
                             </a>
                         }
                     }

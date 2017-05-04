@@ -52,13 +52,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:44:38</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.dll">
-      <publishTime>04/28/2017 14:04:24</publishTime>
+      <publishTime>05/03/2017 13:24:29</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.dll.config">
       <publishTime>04/08/2017 11:46:26</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.FrontEnd.dll">
-      <publishTime>04/28/2017 15:59:41</publishTime>
+      <publishTime>05/04/2017 14:29:32</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/02/2017 17:46:32</publishTime>
@@ -265,7 +265,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 17:12:13</publishTime>
     </File>
     <File Include="Content/pabulum/style.css">
-      <publishTime>04/28/2017 13:53:32</publishTime>
+      <publishTime>05/04/2017 13:20:21</publishTime>
     </File>
     <File Include="Content/pabulum/swipebox.css">
       <publishTime>04/26/2017 09:48:56</publishTime>
@@ -274,7 +274,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 10:17:12</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>04/24/2017 17:24:47</publishTime>
+      <publishTime>05/04/2017 14:24:35</publishTime>
     </File>
     <File Include="Content/themes/base/accordion.css">
       <publishTime>04/26/2017 09:49:37</publishTime>
@@ -447,6 +447,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/close.png">
       <publishTime>04/26/2017 18:20:01</publishTime>
     </File>
+    <File Include="images/default-menu.jpg">
+      <publishTime>05/04/2017 14:19:58</publishTime>
+    </File>
     <File Include="images/facebook-icon.png">
       <publishTime>04/24/2017 14:28:13</publishTime>
     </File>
@@ -477,6 +480,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/loading.gif">
       <publishTime>04/26/2017 18:20:01</publishTime>
     </File>
+    <File Include="images/logo-book.png">
+      <publishTime>05/04/2017 11:10:54</publishTime>
+    </File>
+    <File Include="images/logo-menu.png">
+      <publishTime>05/04/2017 14:14:14</publishTime>
+    </File>
     <File Include="images/menu-icon.png">
       <publishTime>04/26/2017 10:41:15</publishTime>
     </File>
@@ -488,6 +497,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="images/next.png">
       <publishTime>04/26/2017 18:20:01</publishTime>
+    </File>
+    <File Include="images/no-image-available.png">
+      <publishTime>05/03/2017 14:27:37</publishTime>
     </File>
     <File Include="images/prev.png">
       <publishTime>04/26/2017 18:20:01</publishTime>
@@ -580,22 +592,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2017 09:49:41</publishTime>
     </File>
     <File Include="Views/Category/_CategoryList.cshtml">
-      <publishTime>04/27/2017 12:44:14</publishTime>
+      <publishTime>05/04/2017 14:47:58</publishTime>
     </File>
     <File Include="Views/Food/Index.cshtml">
-      <publishTime>04/27/2017 12:45:23</publishTime>
+      <publishTime>05/04/2017 13:59:57</publishTime>
     </File>
     <File Include="Views/Food/_FeatureFood.cshtml">
-      <publishTime>04/28/2017 13:59:03</publishTime>
+      <publishTime>05/03/2017 13:57:07</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
-      <publishTime>04/26/2017 14:22:22</publishTime>
+      <publishTime>05/04/2017 13:42:23</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>04/28/2017 14:00:43</publishTime>
+      <publishTime>05/03/2017 13:14:56</publishTime>
     </File>
     <File Include="Views/Menu/Index.cshtml">
-      <publishTime>04/27/2017 12:46:27</publishTime>
+      <publishTime>05/04/2017 14:27:50</publishTime>
     </File>
     <File Include="Views/Menu/_FeatureMenu.cshtml">
       <publishTime>04/28/2017 13:59:54</publishTime>
@@ -607,10 +619,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/27/2017 10:39:55</publishTime>
     </File>
     <File Include="Views/News/_HotNews.cshtml">
-      <publishTime>04/28/2017 13:59:41</publishTime>
+      <publishTime>05/03/2017 13:29:32</publishTime>
     </File>
     <File Include="Views/PhotoAlbum/Index.cshtml">
-      <publishTime>04/26/2017 18:35:59</publishTime>
+      <publishTime>05/03/2017 14:20:46</publishTime>
+    </File>
+    <File Include="Views/PhotoAlbum/_Newest.cshtml">
+      <publishTime>05/03/2017 14:24:00</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>04/08/2017 11:47:34</publishTime>
@@ -619,7 +634,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 11:44:50</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/28/2017 11:51:17</publishTime>
+      <publishTime>05/04/2017 14:48:49</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>04/08/2017 11:47:34</publishTime>
@@ -628,7 +643,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:47:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/28/2017 16:32:58</publishTime>
+      <publishTime>05/03/2017 13:24:35</publishTime>
     </File>
   </ItemGroup>
 </Project>

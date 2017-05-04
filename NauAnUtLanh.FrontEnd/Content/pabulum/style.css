@@ -250,6 +250,7 @@ span.menu {
 
 .menu-grids-info {
     position: relative;
+    height: 400px;
 }
 
 .menu-rate {
@@ -3116,17 +3117,4 @@ input#datepicker {
     .menu-page-grids p {
         font-size: 15px;
     }
-}
-
-.logo {
-    height: 80px;
-}
-
-.my-thumbnail {
-    height: 300px;
-    width: 300px;
-    padding: 0;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 10px 0 10px;
 }

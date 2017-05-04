@@ -1,36 +1,36 @@
 ﻿@model IEnumerable<NauAnUtLanh.Database.Article>
-    
+
 <div class="container">
     <div class="title cnt-title">
         <h3>Tin tức</h3>
     </div>
-    @{
-        foreach (var article in Model)
-        {
-            <div class="col-md-6">
-                <div style="height: 350px;">
-                    <div class="news-grids-left">
-                        <a href="@Url.Action("details", "news", new {id = article.Id})">
-                            <img src="@Url.Content($"~/upload/article/{article.ArticleAvatar}")" alt="@article.ArticleTitle" title="@article.ArticleTitle" class="img-responsive"/>
-                        </a>
-                    </div>
-                    <div class="news-grids-right">
-                        <h5>@($"{article.CreatedTime:dd/MM/yyyy hh:mm tt}")</h5>
-                        <h4>
+    <div class="row">
+        @{
+            foreach (var article in Model)
+            {
+                <div class="col-md-6">
+                    <div style="height: 350px;">
+                        <div class="news-grids-left">
                             <a href="@Url.Action("details", "news", new {id = article.Id})">
-                                @article.ArticleTitle
+                                <img src="@Url.Content($"~/upload/article/{article.ArticleAvatar}")" alt="@article.ArticleTitle" title="@article.ArticleTitle" class="img-responsive" />
                             </a>
-                        </h4>
-                        <p>@article.ShortDescription</p>
+                        </div>
+                        <div class="news-grids-right">
+                            <h5>@($"{article.CreatedTime:dd/MM/yyyy hh:mm tt}")</h5>
+                            <h4>
+                                <a href="@Url.Action("details", "news", new {id = article.Id})">
+                                    @article.ArticleTitle
+                                </a>
+                            </h4>
+                            <p>@article.ShortDescription</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         }
-    }
+    </div>
     <div class="clearfix"></div>
     <div class="text-center">
         @Html.ActionLink("Xem thêm", "index", "news", new { @id = "loadMore" })
     </div>
 </div>
-
-

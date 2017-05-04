@@ -224,6 +224,7 @@
     <Content Include="images\cal1.png" />
     <Content Include="images\cal2.png" />
     <Content Include="images\close.png" />
+    <Content Include="images\default-menu.jpg" />
     <Content Include="images\facebook-icon.png" />
     <Content Include="images\food-disk-icon.png" />
     <Content Include="images\google-plus-icon.png" />
@@ -234,10 +235,13 @@
     <Content Include="images\icon5.png" />
     <Content Include="images\icons-sprite.png" />
     <Content Include="images\loading.gif" />
+    <Content Include="images\logo-book.png" />
+    <Content Include="images\logo-menu.png" />
     <Content Include="images\menu-icon.png" />
     <Content Include="images\menu2.png" />
     <Content Include="images\move-up.png" />
     <Content Include="images\next.png" />
+    <Content Include="images\no-image-available.png" />
     <Content Include="images\prev.png" />
     <Content Include="images\twitter-icon.png" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -309,6 +313,7 @@
     <Content Include="Views\News\_HotNews.cshtml" />
     <Content Include="Views\Food\_FeatureFood.cshtml" />
     <Content Include="Views\Menu\_FeatureMenu.cshtml" />
+    <Content Include="Views\PhotoAlbum\_Newest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

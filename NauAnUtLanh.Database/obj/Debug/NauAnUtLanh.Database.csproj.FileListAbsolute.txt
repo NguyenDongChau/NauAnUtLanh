@@ -8,3 +8,13 @@ D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\bin\Debug\EntityFramework.SqlServer.x
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\obj\Debug\NauAnUtLanh.Database.dll
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\obj\Debug\NauAnUtLanh.Database.pdb
 D:\Coding\NauAnUtLanh\NauAnUtLanh.Database\obj\Debug\NauAnUtLanh.Database.csprojResolveAssemblyReference.cache
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Debug\NauAnUtLanh.Database.dll.config
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Debug\NauAnUtLanh.Database.dll
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Debug\NauAnUtLanh.Database.pdb
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Debug\EntityFramework.dll
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Debug\EntityFramework.SqlServer.dll
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Debug\EntityFramework.xml
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Debug\EntityFramework.SqlServer.xml
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Debug\NauAnUtLanh.Database.csprojResolveAssemblyReference.cache
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Debug\NauAnUtLanh.Database.dll
+D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Debug\NauAnUtLanh.Database.pdb

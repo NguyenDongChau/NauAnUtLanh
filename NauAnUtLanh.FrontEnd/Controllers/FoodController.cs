@@ -10,7 +10,7 @@ namespace NauAnUtLanh.FrontEnd.Controllers
     public class FoodController : Controller
     {
         private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
-        private const int PageSize = 30;
+        private const int PageSize = 12;
 
         public async Task<ActionResult> Index(int? page, int? type)
         {

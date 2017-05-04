@@ -25,6 +25,13 @@ namespace NauAnUtLanh.FrontEnd.Controllers
             return View(albums.ToPagedList(pageNumber , PageSize));
         }
 
+        public async Task<ActionResult> Newest()
+        {
+            var album = await _db.PhotoAlbums.OrderByDescending(x => x.CreatedTime)
+                .FirstOrDefaultAsync(x => x.Activated);
+            return PartialView("_Newest", album);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

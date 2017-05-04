@@ -36,7 +36,7 @@ namespace NauAnUtLanh.FrontEnd
             bundles.Add(new StyleBundle("~/Content/css").Include(
                     "~/Content/bootstrap.css",
                     "~/Content/lightbox.css",
-                    //"~/Content/site.css",
+                    "~/Content/site.css",
                     "~/Content/pabulum/style.css",
                     "~/Content/pabulum/swipebox.css"
                     ));

@@ -8,13 +8,13 @@
 </style>
 
 <div class="reservation-left">
-    <h4>Loại món ăn</h4>
+    <h4>Nhóm món ăn</h4>
     <ul>
         @{
             foreach (var cate in Model)
             {
                 <li><a href="@Url.Action("index", "food", new {type = cate.Id})">
-                    <img src="@Url.Content("~/images/food-disk-icon.png")" alt="" class="menu-icon"/> @cate.CategoryName
+                    <img src="@Url.Content("~/images/logo-menu.png")" alt="" class="category-icon"/> @cate.CategoryName
                 </a></li>
             }
         }
