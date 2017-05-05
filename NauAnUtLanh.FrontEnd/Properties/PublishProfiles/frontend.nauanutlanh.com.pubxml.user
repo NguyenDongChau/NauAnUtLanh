@@ -604,10 +604,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/04/2017 13:42:23</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/03/2017 13:14:56</publishTime>
+      <publishTime>05/05/2017 08:44:05</publishTime>
     </File>
     <File Include="Views/Menu/Index.cshtml">
-      <publishTime>05/04/2017 14:27:50</publishTime>
+      <publishTime>05/05/2017 08:50:49</publishTime>
     </File>
     <File Include="Views/Menu/_FeatureMenu.cshtml">
       <publishTime>04/28/2017 13:59:54</publishTime>
@@ -616,7 +616,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/27/2017 09:26:57</publishTime>
     </File>
     <File Include="Views/News/Index.cshtml">
-      <publishTime>04/27/2017 10:39:55</publishTime>
+      <publishTime>05/05/2017 08:51:10</publishTime>
     </File>
     <File Include="Views/News/_HotNews.cshtml">
       <publishTime>05/03/2017 13:29:32</publishTime>
@@ -634,7 +634,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 11:44:50</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/04/2017 14:48:49</publishTime>
+      <publishTime>05/05/2017 08:57:26</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>04/08/2017 11:47:34</publishTime>
