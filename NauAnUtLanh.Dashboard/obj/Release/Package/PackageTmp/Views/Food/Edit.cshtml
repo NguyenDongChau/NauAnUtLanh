@@ -4,14 +4,20 @@
     ViewBag.Title = "Danh sách món ăn";
     var cc = new CategoryController();
     var categoryList = cc.GetList();
+    var returnUrl = ViewData["ReturnUrl"].ToString();
 }
 
 <h2>@ViewBag.Title</h2>
 <h4>Hiệu chỉnh</h4>
 <hr />
 
-@using (@Html.BeginForm("edit", "food", FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
+@using (@Html.BeginForm("edit", "food", new ,FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
 {
+    
+}
+
+<form action="@Url.Action("edit", "food", new { returnurl = returnUrl})" method="post" class="form-horizontal" enctype="multipart/form-data">
+    
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
     @Html.HiddenFor(m=>m.Id)
@@ -41,7 +47,7 @@
     <div class="form-group">
         <div class="col-md-6">
             <p class="label label-info">Ảnh đại diện</p>
-            <input type="file" name="Avatar" class="form-control" title="Upload hình đại diện cho món ăn" data-toggle="tooltip" data-placement="bottom"/>
+            <input type="file" name="Avatar" class="form-control" title="Upload hình đại diện cho món ăn" data-toggle="tooltip" data-placement="bottom" />
         </div>
     </div>
 
@@ -56,7 +62,7 @@
             <input type="submit" value="Cập nhật" class="btn btn-primary" />
         </div>
     </div>
-}
+</form>
 
 <hr />
 <p>@Html.ActionLink("Trở về", "index")</p>
