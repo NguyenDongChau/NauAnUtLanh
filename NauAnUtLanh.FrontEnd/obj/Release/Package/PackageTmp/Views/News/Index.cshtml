@@ -1,8 +1,15 @@
-﻿@using PagedList.Mvc
-@model PagedList.IPagedList<NauAnUtLanh.Database.Article>
+﻿@using NauAnUtLanh.Database
+@using PagedList.Mvc
+@model PagedList.IPagedList<Article>
 
 @{
     ViewBag.Title = "Tin tức";
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+    ViewBag.MetaTitle = info?.CompanyName;
+    ViewBag.MetaDescription = info?.MetaDescription;
+    ViewBag.MetaKeywords = info?.MetaKeywords;
+    ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
 }
 
 <div class="news">
