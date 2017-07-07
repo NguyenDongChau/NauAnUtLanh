@@ -8,7 +8,7 @@
     ViewBag.MetaTitle = info?.CompanyName;
     ViewBag.MetaDescription = info?.MetaDescription;
     ViewBag.MetaKeywords = info?.MetaKeywords;
-    ViewBag.MetaImage = info?.MetaImage;
+    ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
 }
 
 <div class="menu-page">

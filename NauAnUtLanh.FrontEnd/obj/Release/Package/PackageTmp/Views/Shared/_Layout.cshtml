@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image/png" href="@Url.Content($"~/upload/{info?.SiteIcon}")" />
     <link href="http://fonts.googleapis.com/css?family=Neuton:200,300,400,700,800,400italic" rel="stylesheet" type="text/css">
     <title>@ViewBag.Title - @($"{info?.CompanyName}")</title>
-    <meta property="fb:app_id" content="@info?.FacebookAppId" />
+    <meta property="fb:app_id" content="@($"{info?.FacebookAppId}")" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="@Request.Url" />
     <meta property="og:title" content="@ViewBag.MetaTitle" />
@@ -19,80 +19,99 @@
     <meta property="og:description" content="@ViewBag.MetaDescription" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-    <!--header-->
-    <div class="header">
-        <div class="container">
-            <div class="header-logo">
-                <a href="@Url.Action("index", "home")"><img src="@Url.Content($"~/upload/{info?.SiteLogo}")" alt="logo" class="logo" /></a>
-            </div>
-            <div class="top-nav">
-                <span class="menu"><img src="@Url.Content("~/images/menu-icon.png")" alt="" /></span>
-                <ul class="nav1 cl-effect-5">
-                    <li><a href="@Url.Action("index", "home")" class="active"><span data-hover="Trang&nbsp;chủ">Trang chủ</span></a></li>
-                    <li><a href="@Url.Action("index", "food")"> <span data-hover="Món&nbsp;ăn">Món ăn</span> </a></li>
-                    <li><a href="@Url.Action("index", "menu")"><span data-hover="Thực&nbsp;đơn">Thực đơn</span></a></li>
-                    <li><a href="@Url.Action("index", "news")"><span data-hover="Tin&nbsp;tức">Tin tức</span></a></li>
-                    <li><a href="@Url.Action("index", "photoalbum")"><span data-hover="Hình&nbsp;ảnh">Hình ảnh</span></a></li>
-                    <li><a href="@Url.Action("contact", "home")"><span data-hover="Liên&nbsp;hệ">Liên hệ</span></a></li>
-                </ul>
-                <!-- script-for-menu -->
-                <script>
-                    $("span.menu").click(function () {
-                        $("ul.nav1").slideToggle(300, function () {
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : "@($"{info?.FacebookAppId}")",
+            xfbml      : true,
+            version    : 'v2.9'
+        });
+        FB.AppEvents.logPageView();
+    };
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<!--header-->
+<div class="header">
+    <div class="container">
+        <div class="header-logo">
+            <a href="@Url.Action("index", "home")"><img src="@Url.Content($"~/upload/{info?.SiteLogo}")" alt="logo" class="logo"/></a>
+        </div>
+        <div class="top-nav">
+            <span class="menu"><img src="@Url.Content("~/images/menu-icon.png")" alt=""/></span>
+            <ul class="nav1 cl-effect-5">
+                <li><a href="@Url.Action("index", "home")"><span data-hover="Trang&nbsp;chủ">Trang chủ</span></a></li>
+                <li><a href="@Url.Action("index", "food")"> <span data-hover="Món&nbsp;ăn">Món ăn</span> </a></li>
+                <li><a href="@Url.Action("index", "menu")"><span data-hover="Thực&nbsp;đơn">Thực đơn</span></a></li>
+                <li><a href="@Url.Action("index", "news")"><span data-hover="Tin&nbsp;tức">Tin tức</span></a></li>
+                <li><a href="@Url.Action("index", "photoalbum")"><span data-hover="Hình&nbsp;ảnh">Hình ảnh</span></a></li>
+                <li><a href="@Url.Action("contact", "home")"><span data-hover="Liên&nbsp;hệ">Liên hệ</span></a></li>
+            </ul>
+            <!-- script-for-menu -->
+            <script>
+                $("span.menu").click(function() {
+                    $("ul.nav1").slideToggle(300,
+                        function() {
                             // Animation complete.
                         });
-                    });
-                </script>
-                <!-- /script-for-menu -->
-            </div>
-            <div class="clearfix"> </div>
+                });
+            </script>
+            <!-- /script-for-menu -->
         </div>
+        <div class="clearfix"> </div>
     </div>
-    <!--//header-->
+</div>
+<!--//header-->
 
-    @RenderBody()
+@RenderBody()
 
-    <!--footer-->
-    <div class="footer">
-        <div class="container">
-            <div class="col-md-3 footer-left">
-                <ul>
-                    <li>@($"{info?.CompanyName}")</li>
-                    <li>@($"{info?.CompanyAddress}")</li>
-                    <li>@($"{info?.CompanyEmail}")</li>
-                    <li>@($"{info?.CompanyPhone}")</li>
-                </ul>
-            </div>
-            <div class="col-md-3 footer-left">
-                <ul>
-                    <li><a href="@Url.Action("index", "home")">| Trang chủ</a></li>
-                    <li><a href="@Url.Action("index", "food")">| Món ăn</a></li>
-                    <li><a href="@Url.Action("index", "menu")">| Thực đơn</a></li>
-                    <li><a href="@Url.Action("index", "news")">| Tin tức</a></li>
-                    <li><a href="@Url.Action("index", "photoalbum")">| Hình ảnh</a></li>
-                    <li><a href="@Url.Action("contact", "home")">| Liên hệ</a></li>
-                </ul>
-            </div>
-            <div class="col-md-6 footer-right">
-                <a href="@Url.Action("index", "home")"><img src="@Url.Content($"~/upload/{info?.SiteLogo}")" alt="logo" class="logo" /></a>
-                <p>© 2012 - @DateTime.Now.Year | Bản quyền thuộc về <a href="http://nauanutlanh.com">Nấu Ăn Út Lanh</a>
-            </div>
-            <div class="clearfix"> </div>
+<!--footer-->
+<div class="footer">
+    <div class="container">
+        <div class="col-md-3 footer-left">
+            <ul>
+                <li>@($"{info?.CompanyName}")</li>
+                <li>@($"{info?.CompanyAddress}")</li>
+                <li>@($"{info?.CompanyEmail}")</li>
+                <li>@($"{info?.CompanyPhone}")</li>
+            </ul>
         </div>
+        <div class="col-md-3 footer-left">
+            <ul>
+                <li><a href="@Url.Action("index", "home")">| Trang chủ</a></li>
+                <li><a href="@Url.Action("index", "food")">| Món ăn</a></li>
+                <li><a href="@Url.Action("index", "menu")">| Thực đơn</a></li>
+                <li><a href="@Url.Action("index", "news")">| Tin tức</a></li>
+                <li><a href="@Url.Action("index", "photoalbum")">| Hình ảnh</a></li>
+                <li><a href="@Url.Action("contact", "home")">| Liên hệ</a></li>
+            </ul>
+        </div>
+        <div class="col-md-6 footer-right">
+            <a href="@Url.Action("index", "home")"><img src="@Url.Content($"~/upload/{info?.SiteLogo}")" alt="logo" class="logo"/></a>
+            <p>© 2012 - @DateTime.Now.Year | Bản quyền thuộc về <a href="http://nauanutlanh.com">Nấu Ăn Út Lanh</a>
+        </div>
+        <div class="clearfix"> </div>
     </div>
-    <!--//footer-->
-    <!--smooth-scrolling-of-move-up-->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $().UItoTop({ easingType: 'easeOutQuart' });
-        });
-    </script>
-    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-    <!--//smooth-scrolling-of-move-up-->
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+</div>
+<!--//footer-->
+<!--smooth-scrolling-of-move-up-->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $().UItoTop({ easingType: 'easeOutQuart' });
+    });
+</script>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!--//smooth-scrolling-of-move-up-->
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+
 </body>
 </html>

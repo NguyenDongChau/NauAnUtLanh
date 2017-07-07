@@ -92,11 +92,12 @@ namespace NauAnUtLanh.Dashboard.Controllers
                 FoodType = food.FoodType,
                 Activated = food.Activated
             };
+            ViewData["ReturnUrl"] = Request.UrlReferrer.ToString();
             return View(model);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(FoodViewModel model)
+        public async Task<ActionResult> Edit(FoodViewModel model, string returnurl)
         {
             if (!ModelState.IsValid) return View(model);
             var food = await _db.Foods.FindAsync(model.Id);
@@ -122,6 +123,7 @@ namespace NauAnUtLanh.Dashboard.Controllers
             food.Activated = model.Activated;
             _db.Entry(food).State = EntityState.Modified;
             await _db.SaveChangesAsync();
+            if (!string.IsNullOrEmpty(returnurl)) return Redirect(returnurl);
             return RedirectToAction("index");
         }
 
