@@ -24,31 +24,31 @@
                 @Html.ValidationSummary(true)
             </div>
             
-            <div class="col-md-12 cnt-inpt">
+            <div class="col-md-12 col-sm-12 col-xs-12 cnt-inpt">
                 @Html.TextBoxFor(m => m.FullName, "", new { placeholder = "Họ và tên" })
                 @Html.ValidationMessageFor(m=>m.FullName, "", new { @class = "text-danger"})
             </div>
 
-            <div class="col-md-6 cnt-inpt">
+            <div class="col-md-6 col-sm-12 col-xs-12 cnt-inpt">
                 @Html.TextBoxFor(m => m.Email, "", new { placeholder = "Email" })
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
             </div>
 
-            <div class="col-md-6 cnt-inpt">
+            <div class="col-md-6 col-sm-12 col-xs-12 cnt-inpt">
                 @Html.TextBoxFor(m => m.PhoneNumber, "", new { placeholder = "Số điện thoại" })
             </div>
 
-            <div class="col-md-12 cnt-inpt">
+            <div class="col-md-12 col-sm-12 col-xs-12 cnt-inpt">
                 @Html.TextBoxFor(m => m.Subject, "", new { placeholder = "Tiêu đề" })
                 @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
             </div>
 
-            <div class="col-md-12 cnt-inpt">
+            <div class="col-md-12 col-sm-12 col-xs-12 cnt-inpt">
                 @Html.TextAreaFor(m => m.Content, new { placeholder = "Nội dung", rows = "5" })
                 @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
             </div>
 
-            <div class="col-md-12 cnt-inpt">
+            <div class="col-md-12 col-sm-12 col-xs-12 cnt-inpt">
                 <button type="submit" class="btn1 btn-1 btn-1e">Gửi liên hệ</button>
             </div>
         }
