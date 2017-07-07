@@ -43,3 +43,28 @@
     left: 20px;
     height: 50px;
 }
+
+@media(max-width:800px) {
+    #carousel-example-generic {
+        display: none;
+    }
+}
+
+@media(max-width:420px) {
+    .my-thumbnail {
+        height: 350px !important;
+        width: 400px !important;
+        margin: 5px;
+    }
+    .menu-grids-info {
+        height: 400px !important;
+        width: 95% !important;
+        padding: 10px 0 !important;
+    }
+    .my-small-thumbnail {
+        height: 200px;
+        width: 95%;
+        padding: 10px 0 10px;
+        margin: 5px;
+    }
+}
