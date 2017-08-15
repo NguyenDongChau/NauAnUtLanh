@@ -1915,7 +1915,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2017 15:59:55</publishTime>
     </File>
     <File Include="Views/Contact/Index.cshtml">
-      <publishTime>04/26/2017 14:53:33</publishTime>
+      <publishTime>08/15/2017 11:28:46</publishTime>
     </File>
     <File Include="Views/DefaultInfo/Index.cshtml">
       <publishTime>04/21/2017 09:12:07</publishTime>

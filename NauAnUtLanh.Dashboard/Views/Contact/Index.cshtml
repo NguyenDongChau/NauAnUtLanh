@@ -11,25 +11,29 @@
     {
         if (!mail.Read)
         {
-            <a href="@Url.Action("details", new {id = mail.Id})">
-                <div class="text-primary">
-                    <div class="col-md-2">@mail.FullName</div>
-                    <div class="col-md-8">@mail.Subject</div>
-                    <div class="col-md-2">@($"{mail.CreatedTime:dd/MM/yyyy HH:mm:ss}")</div>
-                </div>
-            </a>
-            <hr/>
+            <div class="row">
+                <a href="@Url.Action("details", new {id = mail.Id})">
+                    <div class="text-primary" style="font-weight: bold">
+                        <div class="col-md-5">@mail.FullName</div>
+                        <div class="col-md-5">@mail.Subject</div>
+                        <div class="col-md-2">@($"{mail.CreatedTime:dd/MM/yyyy HH:mm:ss}")</div>
+                    </div>
+                </a>
+                <hr/>
+            </div>
         }
         else
         {
-            <a href="@Url.Action("details", new {id = mail.Id})">
-                <div class="text-muted">
-                    <div class="col-md-2">@mail.FullName</div>
-                    <div class="col-md-8">@mail.Subject</div>
-                    <div class="col-md-2">@($"{mail.CreatedTime:dd/MM/yyyy HH:mm:ss}")</div>
-                </div>
-            </a>
-            <hr/>
+            <div class="row">
+                <a href="@Url.Action("details", new {id = mail.Id})">
+                    <div class="text-muted">
+                        <div class="col-md-5">@mail.FullName</div>
+                        <div class="col-md-5">@mail.Subject</div>
+                        <div class="col-md-2">@($"{mail.CreatedTime:dd/MM/yyyy HH:mm:ss}")</div>
+                    </div>
+                </a>
+                <hr/>
+            </div>
         }
     }
 </div>
