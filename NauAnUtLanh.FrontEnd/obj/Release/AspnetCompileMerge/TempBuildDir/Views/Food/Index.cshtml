@@ -1,0 +1,71 @@
+﻿@using NauAnUtLanh.Database
+@using PagedList.Mvc
+@model PagedList.IPagedList<Food>
+
+@{
+    ViewBag.Title = "Món ăn";
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+    ViewBag.MetaTitle = info?.CompanyName;
+    ViewBag.MetaDescription = info?.MetaDescription;
+    ViewBag.MetaKeywords = info?.MetaKeywords;
+    ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
+}
+
+<div class="menu-page">
+    <div class="container">
+        <div class="menu-title">
+            <h3>Món ăn</h3>
+        </div>
+        <div class="col-lg-3" id="food-category"></div>
+        <div class="col-lg-9 menu-page-grids">
+            @{
+                foreach (var food in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            @{
+                                if (!string.IsNullOrEmpty(food.Avatar))
+                                {
+                                    <img src="@Url.Content($"~/upload/food/{food.Avatar}")" alt="" title="@food.FoodName" class="img-responsive my-img-thumbnail"/>
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/images/food-disk-icon.png")" alt="" title="@food.FoodName" class="img-responsive my-img-thumbnail" />
+                                }
+                            }
+                            <div class="caption">
+                                <h4 class="text-primary text-center text-capitalize center-block">@food.FoodName</h4>
+                            </div>
+                        </div>
+                        
+                    </div>
+                }
+            }
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+                @Html.PagedListPager(Model, page => Url.Action("index", new { page }))    
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("getcategories","category")',
+                dataType: "html",
+                success: function (partialView) {
+                    $("#food-category").html(partialView);
+                    $("#food-category").css("display", "block");
+                },
+                error: function (ex) {
+                    //alert("Cann't show popup: " + ex);
+                }
+            });
+        })
+    </script>
+}

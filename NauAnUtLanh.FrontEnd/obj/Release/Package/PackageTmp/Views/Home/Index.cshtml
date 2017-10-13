@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Trang chủ";
     var db = new NauAnUtLanhDbContext();
-    var info = db.DefaultInfos.Find(Guid.Empty);
+    var info = (DefaultInfo) ViewData["defaultinfo"];
     ViewBag.MetaTitle = info?.CompanyName;
     ViewBag.MetaDescription = info?.MetaDescription;
     ViewBag.MetaKeywords = info?.MetaKeywords;

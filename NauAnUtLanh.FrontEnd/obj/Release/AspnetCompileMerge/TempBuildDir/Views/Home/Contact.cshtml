@@ -1,0 +1,93 @@
+﻿@using NauAnUtLanh.Database
+@model NauAnUtLanh.FrontEnd.Models.ContactViewModel
+@{
+    ViewBag.Title = "Liên hệ";
+    var db = new NauAnUtLanhDbContext();
+    var info = db.DefaultInfos.Find(Guid.Empty);
+    ViewBag.MetaTitle = info?.CompanyName;
+    ViewBag.MetaDescription = info?.MetaDescription;
+    ViewBag.MetaKeywords = info?.MetaKeywords;
+    ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
+}
+<div class="contact">
+    <div class="container">
+        <div class="menu-title">
+            <h3>Liên hệ</h3>
+        </div>
+        @using (Html.BeginForm("contact", "home", FormMethod.Post, new { @class = "contact-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @Html.TextBoxFor(m => m.FullName, "", new { placeholder = "Họ và tên" })
+                @Html.ValidationMessageFor(m=>m.FullName, "", new { @class = "text-danger"})
+            </div>
+
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                @Html.TextBoxFor(m => m.Email, "", new { placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                @Html.TextBoxFor(m => m.PhoneNumber, "", new { placeholder = "Số điện thoại" })
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @Html.TextBoxFor(m => m.Subject, "", new { placeholder = "Tiêu đề" })
+                @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @Html.TextAreaFor(m => m.Content, new { placeholder = "Nội dung", rows = "5" })
+                @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <button type="submit" class="btn1 btn-1 btn-1e">Gửi liên hệ</button>
+            </div>
+            <div class="clearfix"></div>
+        }
+
+        <div class="contact-grids">
+            <div class="col-md-8 map">
+                <div class="title cnt-title">
+                    <h3>Bản đồ</h3>
+                </div>
+                <iframe src="@($"{info?.GoogleMapUrl}")" frameborder="0" style="border:0"></iframe>
+            </div>
+            <div class="col-md-4 map address">
+                <div class="title cnt-title">
+                    <h3>Địa chỉ</h3>
+                </div>
+                <ul>
+                    <li>@($"{info?.CompanyName}")</li>
+                    <li>@($"{info?.CompanyAddress}")</li>
+                    <li>@($"Điện thoại: {info?.CompanyPhone}")</li>
+                    <li>@($"Hotline: {info?.Hotline}")</li>
+                    <li>Email: <a href="mailto:@($"{info?.CompanyEmail}")">@($"{info?.CompanyEmail}")</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--//contact-->
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $("#PhoneNumber").keydown(function (e) {
+                if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                    (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                    (e.keyCode >= 35 && e.keyCode <= 40)) {
+                    return;
+                }
+                if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}

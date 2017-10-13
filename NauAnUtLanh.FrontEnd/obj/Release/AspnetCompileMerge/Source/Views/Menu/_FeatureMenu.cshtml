@@ -1,0 +1,32 @@
+﻿@model IEnumerable<NauAnUtLanh.Database.FoodMenu>
+    
+<div class="container">
+    <div class="title cnt-title">
+        <h3>Thực đơn</h3>
+    </div>
+    <div class="col-md-6 menu-grids">
+        @{
+            foreach (var menu in Model)
+            {
+                <div class="menu-text">
+                    <div class="menu-text-left">
+                        <h4>@menu.MenuName</h4>
+                    </div>
+                    <div class="menu-text-midle">
+                        <span class="line"> </span>
+                    </div>
+                    <div class="menu-text-right">
+                        <h4>@($"{menu.Price:0,0}")</h4>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="clearfix"></div>
+    <div class="text-center">
+        @Html.ActionLink("Xem thêm", "index", "menu", new { @id = "loadMore" })
+    </div>
+</div>
+
+

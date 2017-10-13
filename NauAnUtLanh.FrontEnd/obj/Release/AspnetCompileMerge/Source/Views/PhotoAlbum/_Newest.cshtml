@@ -1,0 +1,29 @@
+﻿@model NauAnUtLanh.Database.PhotoAlbum
+
+<div class="gallery">
+    <div class="container">
+        <div class="title cnt-title">
+            <h3>Hình ảnh</h3>
+        </div>
+        @{
+            if (Model != null)
+            {
+                var path = $"~/upload/album/{Model.Id}";
+                var folder = Server.MapPath($"{path}");
+                var files = Directory.GetFiles(folder).ToList();
+                foreach (var img in files)
+                {
+                    var imgName = new FileInfo(img).Name;
+                    <a href="@Url.Content($"{path}/{imgName}")" data-lightbox="roadtrip">
+                        <img class="my-small-thumbnail" src="@Url.Content($"{path}/{imgName}")" alt="@imgName">
+                    </a>
+                }
+            }
+        }
+        <div class="clearfix"></div>
+        <br />
+        <div class="text-center">
+            @Html.ActionLink("Xem thêm", "index", "photoalbum", new { id = "loadMore" })
+        </div>
+    </div>
+</div>

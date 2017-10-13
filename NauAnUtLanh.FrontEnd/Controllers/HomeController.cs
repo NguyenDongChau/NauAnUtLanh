@@ -9,9 +9,11 @@ namespace NauAnUtLanh.FrontEnd.Controllers
     public class HomeController : Controller
     {
         private readonly NauAnUtLanhDbContext _db = new NauAnUtLanhDbContext();
-
-        public ActionResult Index()
+        
+        public async Task<ActionResult> Index()
         {
+            var info = await _db.DefaultInfos.FindAsync(Guid.Empty);
+            ViewData["defaultinfo"] = info;
             return View();
         }
 
