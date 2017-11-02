@@ -10,6 +10,8 @@
     ViewBag.MetaDescription = info?.MetaDescription;
     ViewBag.MetaKeywords = info?.MetaKeywords;
     ViewBag.MetaImage = Url.Content($"~/upload/{info?.MetaImage}");
+    var catId = Convert.ToInt32(Request.QueryString["type"]);
+    
 }
 
 <div class="menu-page">
@@ -44,7 +46,7 @@
             }
             <div class="clearfix"></div>
             <div class="col-md-12">
-                @Html.PagedListPager(Model, page => Url.Action("index", new { page }))    
+                @Html.PagedListPager(Model, page => Url.Action("index", new { page , type = catId}))    
             </div>
         </div>
     </div>

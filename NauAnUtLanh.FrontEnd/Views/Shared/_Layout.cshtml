@@ -76,7 +76,7 @@
 <!--footer-->
 <div class="footer">
     <div class="container">
-        <div class="col-md-3 footer-left">
+        <div class="col-md-3 col-sm-6 footer-left">
             <ul>
                 <li>@($"{info?.CompanyName}")</li>
                 <li>@($"{info?.CompanyAddress}")</li>
@@ -84,7 +84,7 @@
                 <li>@($"{info?.CompanyPhone}")</li>
             </ul>
         </div>
-        <div class="col-md-3 footer-left">
+        <div class="col-md-3 col-sm-6 footer-left">
             <ul>
                 <li><a href="@Url.Action("index", "home")">| Trang chủ</a></li>
                 <li><a href="@Url.Action("index", "food")">| Món ăn</a></li>
@@ -94,7 +94,7 @@
                 <li><a href="@Url.Action("contact", "home")">| Liên hệ</a></li>
             </ul>
         </div>
-        <div class="col-md-6 footer-right">
+        <div class="col-md-6 col-sm-12 footer-right">
             <a href="@Url.Action("index", "home")"><img src="@Url.Content($"~/upload/{info?.SiteLogo}")" alt="logo" class="logo"/></a>
             <p>© 2012 - @DateTime.Now.Year | Bản quyền thuộc về <a href="http://nauanutlanh.com">Nấu Ăn Út Lanh</a>
         </div>

@@ -1,7 +1,6 @@
 ﻿@using NauAnUtLanh.Database
 @{
     ViewBag.Title = "Trang chủ";
-    var db = new NauAnUtLanhDbContext();
     var info = (DefaultInfo) ViewData["defaultinfo"];
     ViewBag.MetaTitle = info?.CompanyName;
     ViewBag.MetaDescription = info?.MetaDescription;
