@@ -298,3 +298,4 @@ D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\bin\System.Web.Web
 D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.csprojResolveAssemblyReference.cache
 D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.dll
 D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.pdb
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Dashboard\obj\Debug\NauAnUtLanh.Dashboard.csproj.CoreCompileInputs.cache

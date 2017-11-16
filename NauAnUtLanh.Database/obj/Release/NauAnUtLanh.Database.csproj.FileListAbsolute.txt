@@ -18,3 +18,14 @@ D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\EntityFramework.
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.csprojResolveAssemblyReference.cache
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.dll
 D:\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.pdb
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\NauAnUtLanh.Database.dll.config
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\NauAnUtLanh.Database.dll
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\NauAnUtLanh.Database.pdb
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\EntityFramework.dll
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\EntityFramework.SqlServer.dll
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\EntityFramework.xml
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\bin\Release\EntityFramework.SqlServer.xml
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.csprojResolveAssemblyReference.cache
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.csproj.CoreCompileInputs.cache
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.dll
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.Database\obj\Release\NauAnUtLanh.Database.pdb

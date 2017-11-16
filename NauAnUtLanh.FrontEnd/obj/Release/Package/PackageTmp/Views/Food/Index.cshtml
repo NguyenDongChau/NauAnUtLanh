@@ -19,27 +19,38 @@
         <div class="menu-title">
             <h3>Món ăn</h3>
         </div>
-        <div class="col-lg-3" id="food-category"></div>
-        <div class="col-lg-9 menu-page-grids">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs" id="food-category"></div>
+        <div class="hidden-lg hidden-md col-sm-12 col-xs-12" id="list-food-category"></div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             @{
                 foreach (var food in Model)
                 {
-                    <div class="col-md-4">
-                        <div class="thumbnail">
-                            @{
-                                if (!string.IsNullOrEmpty(food.Avatar))
-                                {
-                                    <img src="@Url.Content($"~/upload/food/{food.Avatar}")" alt="" title="@food.FoodName" class="img-responsive my-img-thumbnail"/>
-                                }
-                                else
-                                {
-                                    <img src="@Url.Content("~/images/food-disk-icon.png")" alt="" title="@food.FoodName" class="img-responsive my-img-thumbnail" />
-                                }
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        @{
+                            if (!string.IsNullOrEmpty(food.Avatar))
+                            {
+                                <div class="thumbnail">
+                                    <a href="@Url.Content($"~/upload/food/{food.Avatar}")">
+                                        <img src="@Url.Content($"~/upload/food/{food.Avatar}")" alt="Lights" style="width: 100%; height: 100%" class="img-responsive">
+                                        <div class="caption">
+                                            <p>@food.FoodName</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                
                             }
-                            <div class="caption">
-                                <h4 class="text-primary text-center text-capitalize center-block">@food.FoodName</h4>
-                            </div>
-                        </div>
+                            else
+                            {
+                                <div class="thumbnail">
+                                    <a href="@Url.Content("~/images/food-disk-icon.png")">
+                                        <img src="@Url.Content("~/images/food-disk-icon.png")" alt="Lights" style="width: 100%; height: 100%" class="img-responsive">
+                                        <div class="caption">
+                                            <p>@food.FoodName</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        }
                         
                     </div>
                 }
@@ -55,7 +66,7 @@
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $.ajax({
                 type: "GET",
                 url: '@Url.Action("getcategories","category")',
@@ -63,6 +74,19 @@
                 success: function (partialView) {
                     $("#food-category").html(partialView);
                     $("#food-category").css("display", "block");
+                },
+                error: function (ex) {
+                    //alert("Cann't show popup: " + ex);
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("getcategoriesforsmall","category")',
+                dataType: "html",
+                success: function (partialView) {
+                    $("#list-food-category").html(partialView);
+                    $("#list-food-category").css("display", "block");
                 },
                 error: function (ex) {
                     //alert("Cann't show popup: " + ex);

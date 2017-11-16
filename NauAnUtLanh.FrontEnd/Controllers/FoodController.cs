@@ -29,7 +29,7 @@ namespace NauAnUtLanh.FrontEnd.Controllers
             var foods = await _db.Foods
                 .OrderByDescending(x => x.CreatedTime)
                 .Where(x => x.Activated & x.Feature)
-                .Take(6)
+                .Take(8)
                 .ToListAsync();
             return PartialView("_FeatureFood", foods);
         }

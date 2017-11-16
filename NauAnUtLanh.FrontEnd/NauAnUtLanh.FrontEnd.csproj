@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -314,6 +315,7 @@
     <Content Include="Views\Food\_FeatureFood.cshtml" />
     <Content Include="Views\Menu\_FeatureMenu.cshtml" />
     <Content Include="Views\PhotoAlbum\_Newest.cshtml" />
+    <Content Include="Views\Category\_SelectCategoryList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

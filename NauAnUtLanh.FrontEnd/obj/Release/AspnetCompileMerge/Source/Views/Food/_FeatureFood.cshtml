@@ -8,12 +8,19 @@
         @{
             foreach (var food in Model)
             {
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="menu-grids-info">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    @*<div class="my-padding">
                         <img src="@Url.Content($"~/upload/food/{food.Avatar}")" alt="" title="@food.FoodName" class="img-responsive thumbnail"/>
-                        <h3 class="text-primary text-uppercase">@food.FoodName</h3>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 food-name">@food.FoodName</div>
+                    </div>*@
+                    <div class="thumbnail">
+                        <a href="@Url.Content($"~/upload/food/{food.Avatar}")">
+                            <img src="@Url.Content($"~/upload/food/{food.Avatar}")" alt="Lights" style="width: 100%; height: 100%" class="img-responsive">
+                            <div class="caption">
+                                <p>@food.FoodName</p>
+                            </div>
+                        </a>
                     </div>
-                    
                 </div>
             }
         }

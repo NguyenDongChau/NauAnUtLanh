@@ -1,0 +1,9 @@
+﻿@model IEnumerable<NauAnUtLanh.Database.Category>
+
+<div style="padding: 20px 0">
+    @foreach (var cate in Model)
+    {
+        <img src="@Url.Content("~/images/logo-menu.png")" alt="" class="category-icon" />
+        @Html.ActionLink(@cate.CategoryName, "index", "food", new { type = cate.Id }, new { @class = "category-list" })
+    }
+</div>

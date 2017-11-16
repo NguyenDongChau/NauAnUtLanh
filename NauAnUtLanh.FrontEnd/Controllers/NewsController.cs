@@ -35,7 +35,7 @@ namespace NauAnUtLanh.FrontEnd.Controllers
         {
             var articles = await _db.Articles.OrderByDescending(x => x.CreatedTime)
                 .Where(x => x.Activated & x.Hot)
-                .Take(6)
+                .Take(4)
                 .ToListAsync();
             return PartialView("_HotNews", articles);
         }

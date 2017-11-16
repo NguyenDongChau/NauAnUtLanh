@@ -261,3 +261,4 @@ D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\bin\System.Web.WebP
 D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\obj\Release\NauAnUtLanh.FrontEnd.csprojResolveAssemblyReference.cache
 D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\obj\Release\NauAnUtLanh.FrontEnd.dll
 D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\obj\Release\NauAnUtLanh.FrontEnd.pdb
+D:\OneDrive\Coding\Projects\NauAnUtLanh\NauAnUtLanh.FrontEnd\obj\Release\NauAnUtLanh.FrontEnd.csproj.CoreCompileInputs.cache

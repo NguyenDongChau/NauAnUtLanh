@@ -22,10 +22,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 10:05:32</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>11/02/2017 09:12:59</publishTime>
+      <publishTime>11/16/2017 12:56:11</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>11/02/2017 09:12:59</publishTime>
+      <publishTime>11/16/2017 12:56:11</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/08/2017 11:46:24</publishTime>
@@ -61,19 +61,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:44:38</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.dll">
-      <publishTime>07/07/2017 16:05:13</publishTime>
+      <publishTime>11/16/2017 12:18:36</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.dll.config">
       <publishTime>04/08/2017 11:46:26</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.Database.pdb">
-      <publishTime>07/07/2017 16:05:13</publishTime>
+      <publishTime>11/16/2017 12:18:36</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.FrontEnd.dll">
-      <publishTime>11/02/2017 09:12:51</publishTime>
+      <publishTime>11/16/2017 12:52:20</publishTime>
     </File>
     <File Include="bin/NauAnUtLanh.FrontEnd.pdb">
-      <publishTime>11/02/2017 09:12:51</publishTime>
+      <publishTime>11/16/2017 12:52:20</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>04/02/2017 17:46:32</publishTime>
@@ -289,7 +289,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 10:17:12</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>07/07/2017 16:05:13</publishTime>
+      <publishTime>11/16/2017 13:07:53</publishTime>
     </File>
     <File Include="Content/themes/base/accordion.css">
       <publishTime>04/26/2017 09:49:37</publishTime>
@@ -526,7 +526,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/28/2017 14:36:33</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/02/2017 09:12:53</publishTime>
+      <publishTime>11/16/2017 12:56:04</publishTime>
     </File>
     <File Include="Scripts/ai.0.15.0-build58334.js">
       <publishTime>04/08/2017 11:47:44</publishTime>
@@ -612,17 +612,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Category/_CategoryList.cshtml">
       <publishTime>05/04/2017 14:47:58</publishTime>
     </File>
+    <File Include="Views/Category/_SelectCategoryList.cshtml">
+      <publishTime>11/16/2017 13:09:22</publishTime>
+    </File>
     <File Include="Views/Food/Index.cshtml">
-      <publishTime>10/13/2017 14:17:52</publishTime>
+      <publishTime>11/16/2017 12:55:56</publishTime>
     </File>
     <File Include="Views/Food/_FeatureFood.cshtml">
-      <publishTime>11/02/2017 09:18:16</publishTime>
+      <publishTime>11/16/2017 11:37:16</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
-      <publishTime>07/07/2017 19:56:22</publishTime>
+      <publishTime>11/11/2017 19:13:13</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/02/2017 09:10:10</publishTime>
+      <publishTime>11/16/2017 10:40:42</publishTime>
     </File>
     <File Include="Views/Menu/Index.cshtml">
       <publishTime>05/05/2017 08:50:49</publishTime>
@@ -634,16 +637,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/27/2017 09:26:57</publishTime>
     </File>
     <File Include="Views/News/Index.cshtml">
-      <publishTime>05/05/2017 08:51:10</publishTime>
+      <publishTime>11/16/2017 12:16:53</publishTime>
     </File>
     <File Include="Views/News/_HotNews.cshtml">
-      <publishTime>05/03/2017 13:29:32</publishTime>
+      <publishTime>11/16/2017 12:16:46</publishTime>
     </File>
     <File Include="Views/PhotoAlbum/Index.cshtml">
-      <publishTime>05/03/2017 14:20:46</publishTime>
+      <publishTime>11/16/2017 11:56:15</publishTime>
     </File>
     <File Include="Views/PhotoAlbum/_Newest.cshtml">
-      <publishTime>05/03/2017 14:24:00</publishTime>
+      <publishTime>11/16/2017 11:56:25</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>04/08/2017 11:47:34</publishTime>
@@ -661,7 +664,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/08/2017 11:47:34</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/02/2017 09:12:51</publishTime>
+      <publishTime>11/16/2017 12:18:43</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<NauAnUtLanh.Database.Category>
+@foreach (var cate in Model)
+{
+    @:|
+    <a href="@Url.Action("index", "food", new {type = cate.Id})">
+        @cate.CategoryName
+    </a>  
+    @:|
+}
