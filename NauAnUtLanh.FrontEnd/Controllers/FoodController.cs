@@ -27,7 +27,7 @@ namespace NauAnUtLanh.FrontEnd.Controllers
         public async Task<ActionResult> FeatureFood()
         {
             var foods = await _db.Foods
-                .OrderByDescending(x => x.CreatedTime)
+                .OrderByDescending(f => f.CreatedTime)                
                 .Where(x => x.Activated & x.Feature)
                 .Take(8)
                 .ToListAsync();

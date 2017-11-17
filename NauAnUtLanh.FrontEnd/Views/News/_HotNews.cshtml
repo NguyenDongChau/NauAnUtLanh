@@ -8,21 +8,21 @@
         @{
             foreach (var article in Model)
             {
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div style="height: 350px;">
-                        <div class="news-grids-left">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                    <div class="news-container">
+                        <div class="news-pic">
                             <a href="@Url.Action("details", "news", new {id = article.Id})">
                                 <img src="@Url.Content($"~/upload/article/{article.ArticleAvatar}")" alt="@article.ArticleTitle" title="@article.ArticleTitle" class="img-responsive" />
                             </a>
                         </div>
-                        <div class="news-grids-right">
-                            <h5>@($"{article.CreatedTime:dd/MM/yyyy hh:mm tt}")</h5>
-                            <h4>
+                        <div class="news-content">
+                            <p class="news-time">@($"{article.CreatedTime:dd/MM/yyyy hh:mm tt}")</p>
+                            <p class="news-title">
                                 <a href="@Url.Action("details", "news", new {id = article.Id})">
                                     @article.ArticleTitle
                                 </a>
-                            </h4>
-                            <p>@article.ShortDescription</p>
+                            </p>
+                            <p class="news-desc">@article.ShortDescription</p>
                         </div>
                     </div>
                 </div>
